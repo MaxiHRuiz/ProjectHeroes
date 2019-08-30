@@ -43,11 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FiremanStrategies\Sequential.cs" />
+    <Compile Include="FiremanStrategies\Spiral.cs" />
+    <Compile Include="FiremanStrategies\Staircasee.cs" />
     <Compile Include="Heroes\Doctor.cs" />
     <Compile Include="Heroes\Electrician.cs" />
     <Compile Include="Heroes\Firefighter.cs" />
     <Compile Include="Heroes\Mechanic.cs" />
     <Compile Include="Heroes\Policeman.cs" />
+    <Compile Include="Interfaces\IExtinguishFire.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Interfaces\IPlace.cs" />
     <Compile Include="Places\House.cs" />
     <Compile Include="Places\Square.cs" />
     <Compile Include="Places\Street.cs" />
@@ -58,5 +65,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
