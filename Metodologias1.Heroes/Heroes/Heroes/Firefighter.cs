@@ -1,5 +1,6 @@
 ﻿using System;
 using Heroes.FiremanStrategies;
+using Heroes.Helpers;
 using Heroes.Interfaces;
 using Heroes.Places;
 
@@ -11,6 +12,16 @@ namespace Heroes.Heroes
 
         public void PutOutFire(IPlace place, Street street)
         {
+            Enum.TryParse(place.GetType().Name, out PlaceTypeEnum placeType);
+            switch (placeType)
+            {
+                case PlaceTypeEnum.House:
+                    ChangeExtinguishStrategy(new Staircase());
+                    break;
+                case PlaceTypeEnum.Square:
+                    ChangeExtinguishStrategy(new Spiral());
+                    break;
+            }
             Console.WriteLine("The fireman is putting out the fire...");
             this.ExtinguishStrategy.ExtinguishFire(place.GetFields(), street.WaterFlowPerMinute);
             Console.WriteLine($"The fire at {place.ToString()} was put out!!!");

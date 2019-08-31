@@ -46,6 +46,7 @@
     <Compile Include="FiremanStrategies\Sequential.cs" />
     <Compile Include="FiremanStrategies\Spiral.cs" />
     <Compile Include="FiremanStrategies\Staircase.cs" />
+    <Compile Include="Helpers\PlaceTypeEnum.cs" />
     <Compile Include="Heroes\Doctor.cs" />
     <Compile Include="Heroes\Electrician.cs" />
     <Compile Include="Heroes\Firefighter.cs" />

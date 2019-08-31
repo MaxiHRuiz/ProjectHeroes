@@ -31,9 +31,7 @@ namespace Heroes
             square.Street = street;
             square.AddObserver(fireman);
 
-            fireman.ChangeExtinguishStrategy(new Staircase());
             house5.Spark();
-            fireman.ChangeExtinguishStrategy(new Spiral());
             square.Spark();
         }
     }
