@@ -54,6 +54,8 @@
     <Compile Include="Interfaces\IExtinguishFire.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="Interfaces\IFireObserver.cs" />
+    <Compile Include="Interfaces\IFireObserved.cs" />
     <Compile Include="Interfaces\IPlace.cs" />
     <Compile Include="Places\House.cs" />
     <Compile Include="Places\Square.cs" />

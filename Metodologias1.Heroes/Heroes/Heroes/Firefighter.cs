@@ -5,15 +5,15 @@ using Heroes.Places;
 
 namespace Heroes.Heroes
 {
-    public class Firefighter
+    public class Firefighter : IFireObserver
     {
         public IExtinguishFire ExtinguishStrategy { get; set; } = new Sequential();
 
         public void PutOutFire(IPlace place, Street street)
         {
-            Console.WriteLine("The fireman is putting out the fire.");
-            ExtinguishStrategy.ExtinguishFire(place.GetFields(), street.WaterFlowPerMinute);
-            Console.WriteLine($"The fire of the {place.ToString()} went out!!!");
+            Console.WriteLine("The fireman is putting out the fire...");
+            this.ExtinguishStrategy.ExtinguishFire(place.GetFields(), street.WaterFlowPerMinute);
+            Console.WriteLine($"The fire at {place.ToString()} was put out!!!");
         }
 
         public void GetCatOutOfTree()
