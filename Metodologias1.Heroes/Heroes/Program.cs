@@ -1,4 +1,6 @@
-﻿using Heroes.Heroes;
+﻿using Heroes.FiremanStrategies;
+using Heroes.Heroes;
+using Heroes.Places;
 
 namespace Heroes
 {
@@ -6,9 +8,16 @@ namespace Heroes
     {
         static void Main(string[] args)
         {
-            var cop = new Policeman();
-            cop.ArrestCriminal();
-            cop.PatrolStreet();
+            var house = new House(5, 25, 10);
+            var street = new Street(50, 2, 50);
+
+            var fireman = new Firefighter();
+            //fireman.PutOutFire(house, street);
+
+            var square = new Square("test", 36, 5, 4);
+            fireman.ChangeExtinguishStrategy(new Spiral());
+            fireman.PutOutFire(square, street);
+
         }
     }
 }
