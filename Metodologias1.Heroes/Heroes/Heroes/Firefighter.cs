@@ -1,19 +1,30 @@
 ﻿using System;
 using Heroes.FiremanStrategies;
+using Heroes.Helpers;
 using Heroes.Interfaces;
 using Heroes.Places;
 
 namespace Heroes.Heroes
 {
-    public class Firefighter
+    public class Firefighter : IFireObserver
     {
         public IExtinguishFire ExtinguishStrategy { get; set; } = new Sequential();
 
         public void PutOutFire(IPlace place, Street street)
         {
-            Console.WriteLine("The fireman is putting out the fire.");
-            ExtinguishStrategy.ExtinguishFire(place.GetFields(), street.WaterFlowPerMinute);
-            Console.WriteLine($"The fire of the {place.ToString()} went out!!!");
+            Enum.TryParse(place.GetType().Name, out PlaceTypeEnum placeType);
+            switch (placeType)
+            {
+                case PlaceTypeEnum.House:
+                    ChangeExtinguishStrategy(new Staircase());
+                    break;
+                case PlaceTypeEnum.Square:
+                    ChangeExtinguishStrategy(new Spiral());
+                    break;
+            }
+            Console.WriteLine("The fireman is putting out the fire...");
+            this.ExtinguishStrategy.ExtinguishFire(place.GetFields(), street.WaterFlowPerMinute);
+            Console.WriteLine($"The fire at {place.ToString()} was put out!!!");
         }
 
         public void GetCatOutOfTree()
@@ -24,6 +35,11 @@ namespace Heroes.Heroes
         public void ChangeExtinguishStrategy(IExtinguishFire strategy)
         {
             this.ExtinguishStrategy = strategy;
+        }
+
+        public void SoundAlarm(IPlace place, Street street)
+        {
+            this.PutOutFire(place, street);
         }
     }
 }

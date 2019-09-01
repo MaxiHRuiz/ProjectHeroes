@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using Heroes.Interfaces;
 
 namespace Heroes.Places
 {
-    public class Square : IPlace
+    public class Square : IPlace, IFireObserved
     {
         public string Name { get; set; }
 
@@ -13,6 +14,8 @@ namespace Heroes.Places
 
         public int Streetlights { get; set; }
 
+        public Street Street { get; set; }
+
         public Square(string squareName, double lengthMeters, int trees, int streetlights)
         {
             this.Name = squareName;
@@ -20,6 +23,8 @@ namespace Heroes.Places
             this.Trees = trees;
             this.Streetlights = streetlights;
         }
+
+        private List<IFireObserver> observers = new List<IFireObserver>();
 
         public int[][] GetFields()
         {
@@ -40,15 +45,33 @@ namespace Heroes.Places
                 {
                     fields[i][j] = random.Next(101);
                 }
-
             }
 
             return fields;
         }
 
+        public void Spark()
+        {
+            Console.WriteLine($"oh, oh! the {ToString()} is burning!");
+
+            Random r = new Random();
+            var i = r.Next(this.observers.Count);
+            this.observers[i].SoundAlarm(this, this.Street);
+        }
+
+        public void AddObserver(IFireObserver observer)
+        {
+            this.observers.Add(observer);
+        }
+
+        public void RemoveObserver(IFireObserver observer)
+        {
+            this.observers.Remove(observer);
+        }
+
         public override string ToString()
         {
-            return "SQUARE";
+            return $"{this.Name.ToUpper()}, SQUARE";
         }
     }
 }

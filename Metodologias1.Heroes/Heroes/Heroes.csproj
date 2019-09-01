@@ -46,6 +46,7 @@
     <Compile Include="FiremanStrategies\Sequential.cs" />
     <Compile Include="FiremanStrategies\Spiral.cs" />
     <Compile Include="FiremanStrategies\Staircase.cs" />
+    <Compile Include="Helpers\PlaceTypeEnum.cs" />
     <Compile Include="Heroes\Doctor.cs" />
     <Compile Include="Heroes\Electrician.cs" />
     <Compile Include="Heroes\Firefighter.cs" />
@@ -54,6 +55,8 @@
     <Compile Include="Interfaces\IExtinguishFire.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="Interfaces\IFireObserver.cs" />
+    <Compile Include="Interfaces\IFireObserved.cs" />
     <Compile Include="Interfaces\IPlace.cs" />
     <Compile Include="Places\House.cs" />
     <Compile Include="Places\Square.cs" />
