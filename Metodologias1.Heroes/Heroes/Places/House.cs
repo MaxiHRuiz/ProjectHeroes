@@ -53,7 +53,7 @@ namespace Heroes.Places
 
             var r = new Random();
             var i = r.Next(this.observers.Count);
-            this.observers[i].PutOutFire(this, this.Street);
+            this.observers[i].SoundAlarm(this, this.Street);
         }
 
         public void AddObserver(IFireObserver observer)
@@ -68,7 +68,7 @@ namespace Heroes.Places
 
         public override string ToString()
         {
-            return "HOUSE";
+            return $"HOUSE N°{this.Number}";
         }
     }
 }

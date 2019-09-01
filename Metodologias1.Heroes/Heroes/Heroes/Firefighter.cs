@@ -36,5 +36,10 @@ namespace Heroes.Heroes
         {
             this.ExtinguishStrategy = strategy;
         }
+
+        public void SoundAlarm(IPlace place, Street street)
+        {
+            this.PutOutFire(place, street);
+        }
     }
 }

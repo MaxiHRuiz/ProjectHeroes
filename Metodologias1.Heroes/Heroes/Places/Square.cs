@@ -56,7 +56,7 @@ namespace Heroes.Places
 
             Random r = new Random();
             var i = r.Next(this.observers.Count);
-            this.observers[i].PutOutFire(this, this.Street);
+            this.observers[i].SoundAlarm(this, this.Street);
         }
 
         public void AddObserver(IFireObserver observer)

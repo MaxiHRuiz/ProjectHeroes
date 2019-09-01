@@ -4,6 +4,6 @@ namespace Heroes.Interfaces
 {
     public interface IFireObserver
     {
-        void PutOutFire(IPlace place, Street street);
+        void SoundAlarm(IPlace place, Street street);
     }
 }
