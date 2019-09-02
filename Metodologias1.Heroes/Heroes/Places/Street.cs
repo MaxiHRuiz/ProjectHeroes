@@ -1,6 +1,9 @@
-﻿namespace Heroes.Places
+﻿using System;
+using Heroes.Interfaces;
+
+namespace Heroes.Places
 {
-    public class Street
+    public class Street: IIlluminate
     {
         public int LengthInMeters { get; set; }
 
@@ -13,6 +16,11 @@
             this.LengthInMeters = lengthMeters;
             this.Streetlights = streetlights;
             this.WaterFlowPerMinute = waterFlowPerMinute;
+        }
+
+        public void CheckAndChangeBurntLamps()
+        {
+            Console.WriteLine($"The street has {this.Streetlights} lamps to check...");
         }
     }
 }

@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Composites\Neighborhood.cs" />
     <Compile Include="FiremanStrategies\Sequential.cs" />
     <Compile Include="FiremanStrategies\Spiral.cs" />
     <Compile Include="FiremanStrategies\Staircase.cs" />
@@ -57,7 +58,10 @@
     </Compile>
     <Compile Include="Interfaces\IFireObserver.cs" />
     <Compile Include="Interfaces\IFireObserved.cs" />
+    <Compile Include="Interfaces\IIlluminate.cs" />
     <Compile Include="Interfaces\IPlace.cs" />
+    <Compile Include="Composites\Block.cs" />
+    <Compile Include="Composites\City.cs" />
     <Compile Include="Places\House.cs" />
     <Compile Include="Places\Square.cs" />
     <Compile Include="Places\Street.cs" />
