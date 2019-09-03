@@ -83,11 +83,11 @@ namespace Heroes
             block1.Places.Add(corner1);
 
             var block2 = new CompositePlace();
-            block1.Places.Add(street1);
-            block1.Places.Add(street5);
-            block1.Places.Add(street6);
-            block1.Places.Add(corner1);
-            block1.Places.Add(corner2);
+            block2.Places.Add(street1);
+            block2.Places.Add(street5);
+            block2.Places.Add(street6);
+            block2.Places.Add(corner1);
+            block2.Places.Add(corner2);
 
             var block3 = new CompositePlace();
             block3.Places.Add(street1);
@@ -139,11 +139,11 @@ namespace Heroes
             block1.Places.Add(corner4);
 
             block2 = new CompositePlace();
-            block1.Places.Add(street1);
-            block1.Places.Add(street8);
-            block1.Places.Add(street9);
-            block1.Places.Add(corner4);
-            block1.Places.Add(corner5);
+            block2.Places.Add(street1);
+            block2.Places.Add(street8);
+            block2.Places.Add(street9);
+            block2.Places.Add(corner4);
+            block2.Places.Add(corner5);
 
             block3 = new CompositePlace();
             block3.Places.Add(street1);
