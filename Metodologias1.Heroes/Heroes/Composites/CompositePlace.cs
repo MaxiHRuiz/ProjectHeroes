@@ -5,7 +5,7 @@ namespace Heroes.Composites
 {
     public class CompositePlace : IIlluminate
     {
-        public List<IIlluminate> Places { get; set; }
+        private List<IIlluminate> Places { get; set; }
 
         public CompositePlace()
         {
@@ -18,6 +18,16 @@ namespace Heroes.Composites
             {
                 place.CheckAndChangeBurntLamps();
             }
+        }
+
+        public void AddPlace(IIlluminate place)
+        {
+            this.Places.Add(place);
+        }
+
+        public void RemovePlace(IIlluminate place)
+        {
+            this.Places.Remove(place);
         }
     }
 }

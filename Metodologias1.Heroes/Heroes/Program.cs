@@ -78,97 +78,97 @@ namespace Heroes
 
             // Blocks
             var block1 = new CompositePlace();
-            block1.Places.Add(street1);
-            block1.Places.Add(street5);
-            block1.Places.Add(corner1);
+            block1.AddPlace(street1);
+            block1.AddPlace(street5);
+            block1.AddPlace(corner1);
 
             var block2 = new CompositePlace();
-            block2.Places.Add(street1);
-            block2.Places.Add(street5);
-            block2.Places.Add(street6);
-            block2.Places.Add(corner1);
-            block2.Places.Add(corner2);
+            block2.AddPlace(street1);
+            block2.AddPlace(street5);
+            block2.AddPlace(street6);
+            block2.AddPlace(corner1);
+            block2.AddPlace(corner2);
 
             var block3 = new CompositePlace();
-            block3.Places.Add(street1);
-            block3.Places.Add(street6);
-            block3.Places.Add(street7);
-            block3.Places.Add(corner2);
-            block3.Places.Add(corner3);
-            block3.Places.Add(square1);
+            block3.AddPlace(street1);
+            block3.AddPlace(street6);
+            block3.AddPlace(street7);
+            block3.AddPlace(corner2);
+            block3.AddPlace(corner3);
+            block3.AddPlace(square1);
 
             var block4 = new CompositePlace();
-            block4.Places.Add(street1);
-            block4.Places.Add(street2);
-            block4.Places.Add(street5);
-            block4.Places.Add(corner1);
-            block4.Places.Add(corner6);
+            block4.AddPlace(street1);
+            block4.AddPlace(street2);
+            block4.AddPlace(street5);
+            block4.AddPlace(corner1);
+            block4.AddPlace(corner6);
 
             var block5 = new CompositePlace();
-            block5.Places.Add(street1);
-            block5.Places.Add(street2);
-            block5.Places.Add(street5);
-            block5.Places.Add(street6);
-            block5.Places.Add(corner1);
-            block5.Places.Add(corner6);
-            block5.Places.Add(corner2);
-            block5.Places.Add(corner7);
+            block5.AddPlace(street1);
+            block5.AddPlace(street2);
+            block5.AddPlace(street5);
+            block5.AddPlace(street6);
+            block5.AddPlace(corner1);
+            block5.AddPlace(corner6);
+            block5.AddPlace(corner2);
+            block5.AddPlace(corner7);
 
             var block6 = new CompositePlace();
-            block6.Places.Add(street1);
-            block6.Places.Add(street2);
-            block6.Places.Add(street6);
-            block6.Places.Add(street7);
-            block6.Places.Add(corner2);
-            block6.Places.Add(corner3);
-            block6.Places.Add(corner7);
-            block6.Places.Add(corner8);
-            block6.Places.Add(square2);
+            block6.AddPlace(street1);
+            block6.AddPlace(street2);
+            block6.AddPlace(street6);
+            block6.AddPlace(street7);
+            block6.AddPlace(corner2);
+            block6.AddPlace(corner3);
+            block6.AddPlace(corner7);
+            block6.AddPlace(corner8);
+            block6.AddPlace(square2);
 
             var neighborhoodA = new CompositePlace();
-            neighborhoodA.Places.Add(block1);
-            neighborhoodA.Places.Add(block2);
-            neighborhoodA.Places.Add(block3);
+            neighborhoodA.AddPlace(block1);
+            neighborhoodA.AddPlace(block2);
+            neighborhoodA.AddPlace(block3);
 
             // NeighborhoodB: 7 blocks, 1 square
 
             // Blocks
             block1 = new CompositePlace();
-            block1.Places.Add(street1);
-            block1.Places.Add(street8);
-            block1.Places.Add(corner4);
+            block1.AddPlace(street1);
+            block1.AddPlace(street8);
+            block1.AddPlace(corner4);
 
             block2 = new CompositePlace();
-            block2.Places.Add(street1);
-            block2.Places.Add(street8);
-            block2.Places.Add(street9);
-            block2.Places.Add(corner4);
-            block2.Places.Add(corner5);
+            block2.AddPlace(street1);
+            block2.AddPlace(street8);
+            block2.AddPlace(street9);
+            block2.AddPlace(corner4);
+            block2.AddPlace(corner5);
 
             block3 = new CompositePlace();
-            block3.Places.Add(street1);
-            block3.Places.Add(street2);
-            block3.Places.Add(street8);
-            block3.Places.Add(corner4);
-            block3.Places.Add(corner9);
-            block3.Places.Add(square3);
+            block3.AddPlace(street1);
+            block3.AddPlace(street2);
+            block3.AddPlace(street8);
+            block3.AddPlace(corner4);
+            block3.AddPlace(corner9);
+            block3.AddPlace(square3);
 
             block4 = new CompositePlace();
-            block4.Places.Add(street1);
-            block4.Places.Add(street2);
-            block4.Places.Add(street8);
-            block4.Places.Add(street9);
-            block4.Places.Add(corner4);
-            block4.Places.Add(corner5);
-            block4.Places.Add(corner9);
-            block4.Places.Add(corner10);
-            block4.Places.Add(square4);
+            block4.AddPlace(street1);
+            block4.AddPlace(street2);
+            block4.AddPlace(street8);
+            block4.AddPlace(street9);
+            block4.AddPlace(corner4);
+            block4.AddPlace(corner5);
+            block4.AddPlace(corner9);
+            block4.AddPlace(corner10);
+            block4.AddPlace(square4);
 
             var neighborhoodB = new CompositePlace();
-            neighborhoodA.Places.Add(block1);
-            neighborhoodA.Places.Add(block2);
-            neighborhoodA.Places.Add(block3);
-            neighborhoodA.Places.Add(block4);
+            neighborhoodA.AddPlace(block1);
+            neighborhoodA.AddPlace(block2);
+            neighborhoodA.AddPlace(block3);
+            neighborhoodA.AddPlace(block4);
 
             // NeighborhoodC: 5 blocks, 2 square
             var neighborhoodC = new CompositePlace();
@@ -177,8 +177,8 @@ namespace Heroes
             var neighborhoodD = new CompositePlace();
 
             var city = new CompositePlace();
-            city.Places.Add(neighborhoodA);
-            city.Places.Add(neighborhoodB);
+            city.AddPlace(neighborhoodA);
+            city.AddPlace(neighborhoodB);
             #endregion mocks
 
             elictrician.Checking(city);
