@@ -4,7 +4,7 @@ using Heroes.Interfaces;
 
 namespace Heroes.Places
 {
-    public class Square : IPlace, IFireObserved
+    public class Square : IPlace, IFireObserved, IIlluminate
     {
         public string Name { get; set; }
 
@@ -67,6 +67,11 @@ namespace Heroes.Places
         public void RemoveObserver(IFireObserver observer)
         {
             this.observers.Remove(observer);
+        }
+
+        public void CheckAndChangeBurntLamps()
+        {
+            Console.WriteLine($"The {this.ToString()} has {this.Streetlights} lamps to check...");
         }
 
         public override string ToString()
