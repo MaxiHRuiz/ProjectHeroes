@@ -6,7 +6,7 @@ namespace Heroes.Interfaces
     {
         Street Street { get; set; }
 
-        int[][] GetFields();
+        ISector[][] GetFields();
 
         void Spark();
     }

@@ -1,5 +1,8 @@
-﻿using Heroes.Composites;
+﻿using System;
+using Heroes.Composites;
+using Heroes.Decorator;
 using Heroes.Heroes;
+using Heroes.Interfaces;
 using Heroes.Places;
 
 namespace Heroes
@@ -8,7 +11,7 @@ namespace Heroes
     {
         static void Main(string[] args)
         {
-            Composite();
+            Decorator();
         }
 
         static void Observer()
@@ -182,6 +185,16 @@ namespace Heroes
             #endregion mocks
 
             elictrician.Checking(city);
+        }
+
+        static void Decorator()
+        {
+            var fireman = new Firefighter();
+            var house = new House(102, 1, 1);
+            var street = new Street(110, 64, 15);
+            house.Street = street;
+            house.AddObserver(fireman);
+            house.Spark();
         }
     }
 }

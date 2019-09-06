@@ -2,6 +2,6 @@
 {
     public interface IExtinguishFire
     {
-        void ExtinguishFire(int[][] squareMeters, int waterFlowPerMinute);
+        void ExtinguishFire(ISector[][] squareMeters, int waterFlowPerMinute);
     }
 }

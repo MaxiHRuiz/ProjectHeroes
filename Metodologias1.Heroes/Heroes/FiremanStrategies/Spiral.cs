@@ -6,7 +6,7 @@ namespace Heroes.FiremanStrategies
 {
     public class Spiral : IExtinguishFire
     {
-        public void ExtinguishFire(int[][] squareMeters, int waterFlowPerMinute)
+        public void ExtinguishFire(ISector[][] squareMeters, int waterFlowPerMinute)
         {
             var fieldExtinguish = squareMeters.Length * squareMeters.Length;
             var x = 0;
@@ -24,21 +24,21 @@ namespace Heroes.FiremanStrategies
 
             while (fieldExtinguish > 0)
             {
-                var fireLeft = new List<int>();
-                fireLeft.Add(squareMeters[x][y]);
+                var fireLeft = new List<double>();
+                fireLeft.Add(squareMeters[x][y].FireDamage);
 
                 if (goRight)
                 {
-                    while (squareMeters[x][y] > 0)
+                    while (!squareMeters[x][y].IsOff())
                     {
-                        squareMeters[x][y] -= waterFlowPerMinute;
-                        if (squareMeters[x][y] < 0)
+                        squareMeters[x][y].Wet(waterFlowPerMinute);
+                        if (squareMeters[x][y].IsOff())
                         {
                             fireLeft.Add(0);
                         }
                         else
                         {
-                            fireLeft.Add(squareMeters[x][y]);
+                            fireLeft.Add(squareMeters[x][y].FireDamage);
                         }
                     }
 
@@ -59,16 +59,16 @@ namespace Heroes.FiremanStrategies
                 }
                 else if (goDown)
                 {
-                    while (squareMeters[x][y] > 0)
+                    while (!squareMeters[x][y].IsOff())
                     {
-                        squareMeters[x][y] -= waterFlowPerMinute;
-                        if (squareMeters[x][y] < 0)
+                        squareMeters[x][y].Wet(waterFlowPerMinute);
+                        if (squareMeters[x][y].IsOff())
                         {
                             fireLeft.Add(0);
                         }
                         else
                         {
-                            fireLeft.Add(squareMeters[x][y]);
+                            fireLeft.Add(squareMeters[x][y].FireDamage);
                         }
                     }
 
@@ -89,16 +89,16 @@ namespace Heroes.FiremanStrategies
                 }
                 else if (goLeft)
                 {
-                    while (squareMeters[x][y] > 0)
+                    while (!squareMeters[x][y].IsOff())
                     {
-                        squareMeters[x][y] -= waterFlowPerMinute;
-                        if (squareMeters[x][y] < 0)
+                        squareMeters[x][y].Wet(waterFlowPerMinute);
+                        if (squareMeters[x][y].IsOff())
                         {
                             fireLeft.Add(0);
                         }
                         else
                         {
-                            fireLeft.Add(squareMeters[x][y]);
+                            fireLeft.Add(squareMeters[x][y].FireDamage);
                         }
                     }
 
@@ -119,16 +119,16 @@ namespace Heroes.FiremanStrategies
                 }
                 else if (goUp)
                 {
-                    while (squareMeters[x][y] > 0)
+                    while (!squareMeters[x][y].IsOff())
                     {
-                        squareMeters[x][y] -= waterFlowPerMinute;
-                        if (squareMeters[x][y] < 0)
+                        squareMeters[x][y].Wet(waterFlowPerMinute);
+                        if (squareMeters[x][y].IsOff())
                         {
                             fireLeft.Add(0);
                         }
                         else
                         {
-                            fireLeft.Add(squareMeters[x][y]);
+                            fireLeft.Add(squareMeters[x][y].FireDamage);
                         }
                     }
 
