@@ -18,5 +18,10 @@ namespace Heroes.Decorator
         {
             sector.Wet(water - (Math.Exp(windSpeed/100)));
         }
+
+        public override string ToString()
+        {
+            return "WindyDay, " + sector.ToString();
+        }
     }
 }

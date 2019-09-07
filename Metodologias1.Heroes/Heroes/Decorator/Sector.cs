@@ -20,5 +20,15 @@ namespace Heroes.Decorator
         {
             this.FireDamage -= water;
         }
+
+        public double GetFireDamage()
+        {
+            return this.FireDamage;
+        }
+
+        public override string ToString()
+        {
+            return "Basic";
+        }
     }
 }

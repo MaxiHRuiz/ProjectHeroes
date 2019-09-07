@@ -1,5 +1,5 @@
 ﻿using System;
-using Heroes.FiremanStrategies;
+using Heroes.Strategies.FiremanStrategies;
 using Heroes.Helpers;
 using Heroes.Interfaces;
 using Heroes.Places;
@@ -22,9 +22,10 @@ namespace Heroes.Heroes
                     ChangeExtinguishStrategy(new Spiral());
                     break;
             }
-            Console.WriteLine("The fireman is putting out the fire...");
+            Console.WriteLine("The fireman is putting out the fire...\n");
             this.ExtinguishStrategy.ExtinguishFire(place.GetFields(), street.WaterFlowPerMinute);
-            Console.WriteLine($"The fire at {place.ToString()} was put out!!!");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine($"\nThe fire at {place.ToString()} was put out!!!");
         }
 
         public void GetCatOutOfTree()

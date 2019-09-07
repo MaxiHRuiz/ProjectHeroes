@@ -6,8 +6,6 @@ namespace Heroes.Decorator
     {
         private readonly ISector sector;
 
-        public double FireDamage { get; set; }
-
         public SectorDecorator(ISector sector)
         {
             this.sector = sector;
@@ -21,6 +19,11 @@ namespace Heroes.Decorator
         public virtual void Wet(double water)
         {
             this.sector.Wet(water);
+        }
+
+        public double GetFireDamage()
+        {
+            return sector.GetFireDamage();
         }
     }
 }

@@ -1,8 +1,5 @@
-﻿using System;
-using Heroes.Composites;
-using Heroes.Decorator;
+﻿using Heroes.Composites;
 using Heroes.Heroes;
-using Heroes.Interfaces;
 using Heroes.Places;
 
 namespace Heroes
@@ -190,11 +187,12 @@ namespace Heroes
         static void Decorator()
         {
             var fireman = new Firefighter();
-            var house = new House(102, 1, 1);
+            var square = new Square("San Martin", 9, 5, 4);
+            //var house = new House(102, 9, 1);
             var street = new Street(110, 64, 15);
-            house.Street = street;
-            house.AddObserver(fireman);
-            house.Spark();
+            square.Street = street;
+            square.AddObserver(fireman);
+            square.Spark();
         }
     }
 }

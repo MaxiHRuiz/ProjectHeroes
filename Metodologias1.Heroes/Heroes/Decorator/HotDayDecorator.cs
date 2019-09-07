@@ -17,5 +17,10 @@ namespace Heroes.Decorator
         {
             sector.Wet(water - (this.temperature * 0.1));
         }
+
+        public override string ToString()
+        {
+            return "HotDay, " + sector.ToString();
+        }
     }
 }

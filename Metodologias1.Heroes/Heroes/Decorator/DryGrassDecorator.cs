@@ -2,11 +2,11 @@
 
 namespace Heroes.Decorator
 {
-    public class DryGrass : SectorDecorator
+    public class DryGrassDecorator : SectorDecorator
     {
         private ISector sector;
 
-        public DryGrass(ISector sector) : base(sector)
+        public DryGrassDecorator(ISector sector) : base(sector)
         {
             this.sector = sector;
         }
@@ -14,6 +14,11 @@ namespace Heroes.Decorator
         public override void Wet(double water)
         {
             sector.Wet(water/2);
+        }
+
+        public override string ToString()
+        {
+            return "DryGrass, " + sector.ToString();
         }
     }
 }

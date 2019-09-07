@@ -58,7 +58,9 @@ namespace Heroes.Places
 
         public void Spark()
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"oh, oh! the {ToString()} is burning!");
+            Console.ResetColor();
 
             Random r = new Random();
             var i = r.Next(this.observers.Count);

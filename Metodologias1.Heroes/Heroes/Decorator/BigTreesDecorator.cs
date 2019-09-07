@@ -15,5 +15,10 @@ namespace Heroes.Decorator
         {
             sector.Wet(water - (water * 0.25));
         }
+
+        public override string ToString()
+        {
+            return "BigTrees, " + sector.ToString();
+        }
     }
 }
