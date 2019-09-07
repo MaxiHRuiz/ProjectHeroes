@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Heroes.Decorator;
+using Heroes.Helpers;
 using Heroes.Interfaces;
 
 namespace Heroes.Places
@@ -16,6 +18,8 @@ namespace Heroes.Places
 
         public Street Street { get; set; }
 
+        private List<IFireObserver> observers = new List<IFireObserver>();
+
         public Square(string squareName, double lengthMeters, int trees, int streetlights)
         {
             this.Name = squareName;
@@ -24,26 +28,28 @@ namespace Heroes.Places
             this.Streetlights = streetlights;
         }
 
-        private List<IFireObserver> observers = new List<IFireObserver>();
-
-        public int[][] GetFields()
+        public ISector[][] GetFields()
         {
             var squareMeters = Math.Sqrt(this.Area);
             var n = (int)Math.Round(squareMeters);
             var random = new Random();
-
-            var fields = new int[n][];
+            var fields = new ISector[n][];
 
             for (int i = 0; i < n; i++)
             {
-                fields[i] = new int[n];
+                fields[i] = new ISector[n];
             }
 
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
-                    fields[i][j] = random.Next(101);
+                    int fireDamage = random.Next(100);
+                    int temp = random.Next(30, 45);
+                    int wind = random.Next(80, 250);
+                    int rain = random.Next(1, 500);
+                    var sector = new Sector(fireDamage);
+                    fields[i][j] = DecorateSectorHelper.DecorateSector(sector, rain, temp, wind);
                 }
             }
 
@@ -52,7 +58,9 @@ namespace Heroes.Places
 
         public void Spark()
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"oh, oh! the {ToString()} is burning!");
+            Console.ResetColor();
 
             Random r = new Random();
             var i = r.Next(this.observers.Count);

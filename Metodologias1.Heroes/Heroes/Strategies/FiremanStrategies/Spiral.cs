@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using Heroes.Interfaces;
 
-namespace Heroes.FiremanStrategies
+namespace Heroes.Strategies.FiremanStrategies
 {
     public class Spiral : IExtinguishFire
     {
-        public void ExtinguishFire(int[][] squareMeters, int waterFlowPerMinute)
+        public void ExtinguishFire(ISector[][] squareMeters, int waterFlowPerMinute)
         {
             var fieldExtinguish = squareMeters.Length * squareMeters.Length;
             var x = 0;
@@ -24,26 +24,28 @@ namespace Heroes.FiremanStrategies
 
             while (fieldExtinguish > 0)
             {
-                var fireLeft = new List<int>();
-                fireLeft.Add(squareMeters[x][y]);
+                var remainingFireList = new List<double>();
+                remainingFireList.Add(squareMeters[x][y].GetFireDamage());
 
                 if (goRight)
                 {
-                    while (squareMeters[x][y] > 0)
+                    while (!squareMeters[x][y].IsOff())
                     {
-                        squareMeters[x][y] -= waterFlowPerMinute;
-                        if (squareMeters[x][y] < 0)
+                        squareMeters[x][y].Wet(waterFlowPerMinute);
+                        if (squareMeters[x][y].IsOff())
                         {
-                            fireLeft.Add(0);
+                            remainingFireList.Add(0);
                         }
                         else
                         {
-                            fireLeft.Add(squareMeters[x][y]);
+                            remainingFireList.Add(Math.Round(squareMeters[x][y].GetFireDamage(), 2));
                         }
                     }
 
-                    Console.WriteLine($"({x},{y}) -> " + string.Join(" -> ", fireLeft));
-                    fieldExtinguish--;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("Difficulties in the sector:");
+                    Console.ResetColor();
+                    Console.WriteLine($" {squareMeters[x][y].ToString()} - SECTOR: ({x},{y}) -> " + string.Join(" -> ", remainingFireList)); fieldExtinguish--;
 
                     if (x == top && y == right)
                     {
@@ -59,20 +61,23 @@ namespace Heroes.FiremanStrategies
                 }
                 else if (goDown)
                 {
-                    while (squareMeters[x][y] > 0)
+                    while (!squareMeters[x][y].IsOff())
                     {
-                        squareMeters[x][y] -= waterFlowPerMinute;
-                        if (squareMeters[x][y] < 0)
+                        squareMeters[x][y].Wet(waterFlowPerMinute);
+                        if (squareMeters[x][y].IsOff())
                         {
-                            fireLeft.Add(0);
+                            remainingFireList.Add(0);
                         }
                         else
                         {
-                            fireLeft.Add(squareMeters[x][y]);
+                            remainingFireList.Add(Math.Round(squareMeters[x][y].GetFireDamage(), 2));
                         }
                     }
 
-                    Console.WriteLine($"({x},{y}) -> " + string.Join(" -> ", fireLeft));
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("Difficulties in the sector:");
+                    Console.ResetColor();
+                    Console.WriteLine($" {squareMeters[x][y].ToString()} - SECTOR: ({x},{y}) -> " + string.Join(" -> ", remainingFireList));
                     fieldExtinguish--;
 
                     if (x == down && y == right)
@@ -89,20 +94,23 @@ namespace Heroes.FiremanStrategies
                 }
                 else if (goLeft)
                 {
-                    while (squareMeters[x][y] > 0)
+                    while (!squareMeters[x][y].IsOff())
                     {
-                        squareMeters[x][y] -= waterFlowPerMinute;
-                        if (squareMeters[x][y] < 0)
+                        squareMeters[x][y].Wet(waterFlowPerMinute);
+                        if (squareMeters[x][y].IsOff())
                         {
-                            fireLeft.Add(0);
+                            remainingFireList.Add(0);
                         }
                         else
                         {
-                            fireLeft.Add(squareMeters[x][y]);
+                            remainingFireList.Add(Math.Round(squareMeters[x][y].GetFireDamage(), 2));
                         }
                     }
 
-                    Console.WriteLine($"({x},{y}) -> " + string.Join(" -> ", fireLeft));
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("Difficulties in the sector:");
+                    Console.ResetColor();
+                    Console.WriteLine($" {squareMeters[x][y].ToString()} - SECTOR: ({x},{y}) -> " + string.Join(" -> ", remainingFireList));
                     fieldExtinguish--;
 
                     if (x == down && y == left)
@@ -119,20 +127,23 @@ namespace Heroes.FiremanStrategies
                 }
                 else if (goUp)
                 {
-                    while (squareMeters[x][y] > 0)
+                    while (!squareMeters[x][y].IsOff())
                     {
-                        squareMeters[x][y] -= waterFlowPerMinute;
-                        if (squareMeters[x][y] < 0)
+                        squareMeters[x][y].Wet(waterFlowPerMinute);
+                        if (squareMeters[x][y].IsOff())
                         {
-                            fireLeft.Add(0);
+                            remainingFireList.Add(0);
                         }
                         else
                         {
-                            fireLeft.Add(squareMeters[x][y]);
+                            remainingFireList.Add(Math.Round(squareMeters[x][y].GetFireDamage(), 2));
                         }
                     }
 
-                    Console.WriteLine($"({x},{y}) -> " + string.Join(" -> ", fireLeft));
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("Difficulties in the sector:");
+                    Console.ResetColor();
+                    Console.WriteLine($" {squareMeters[x][y].ToString()} - SECTOR: ({x},{y}) -> " + string.Join(" -> ", remainingFireList));
                     fieldExtinguish--;
 
                     if (x == top)

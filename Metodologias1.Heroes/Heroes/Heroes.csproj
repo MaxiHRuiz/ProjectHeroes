@@ -44,9 +44,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Composites\CompositePlace.cs" />
-    <Compile Include="FiremanStrategies\Sequential.cs" />
-    <Compile Include="FiremanStrategies\Spiral.cs" />
-    <Compile Include="FiremanStrategies\Staircase.cs" />
+    <Compile Include="Decorator\RainingDay.cs" />
+    <Compile Include="Decorator\ScaredPeopleDecoratory.cs" />
+    <Compile Include="Decorator\HotDayDecorator.cs" />
+    <Compile Include="Decorator\BigTreesDecorator.cs" />
+    <Compile Include="Decorator\DryGrassDecorator.cs" />
+    <Compile Include="Decorator\Sector.cs" />
+    <Compile Include="Decorator\SectorDecorator.cs" />
+    <Compile Include="Decorator\WindyDayDecorator.cs" />
+    <Compile Include="Strategies\FiremanStrategies\Sequential.cs" />
+    <Compile Include="Strategies\FiremanStrategies\Spiral.cs" />
+    <Compile Include="Strategies\FiremanStrategies\Staircase.cs" />
+    <Compile Include="Helpers\DecorateSectorHelper.cs" />
     <Compile Include="Helpers\PlaceTypeEnum.cs" />
     <Compile Include="Heroes\Doctor.cs" />
     <Compile Include="Heroes\Electrician.cs" />
@@ -60,6 +69,7 @@
     <Compile Include="Interfaces\IFireObserved.cs" />
     <Compile Include="Interfaces\IIlluminate.cs" />
     <Compile Include="Interfaces\IPlace.cs" />
+    <Compile Include="Interfaces\ISector.cs" />
     <Compile Include="Places\House.cs" />
     <Compile Include="Places\Square.cs" />
     <Compile Include="Places\Street.cs" />
