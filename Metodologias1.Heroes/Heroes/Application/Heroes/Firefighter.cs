@@ -9,7 +9,7 @@ namespace Application.Heroes
 {
     public class Firefighter : IFireObserver
     {
-        public IExtinguishFire ExtinguishStrategy { get; set; } = new Sequential();
+        public IExtinguishFire ExtinguishStrategy { get; set; } = new SequentialStrategy();
 
         public void PutOutFire(IPlace place, Street street)
         {
@@ -17,10 +17,10 @@ namespace Application.Heroes
             switch (placeType)
             {
                 case PlaceTypeEnum.House:
-                    ChangeExtinguishStrategy(new Staircase());
+                    ChangeExtinguishStrategy(new StaircaseStrategy());
                     break;
                 case PlaceTypeEnum.Square:
-                    ChangeExtinguishStrategy(new Spiral());
+                    ChangeExtinguishStrategy(new SpiralStrategy());
                     break;
             }
             Console.WriteLine("The fireman is putting out the fire...\n");

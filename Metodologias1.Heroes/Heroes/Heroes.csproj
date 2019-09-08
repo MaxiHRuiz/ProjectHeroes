@@ -52,9 +52,9 @@
     <Compile Include="Domain\Place\Sector.cs" />
     <Compile Include="Domain\Place\SectorDecorator.cs" />
     <Compile Include="Domain\Place\WindyDayDecorator.cs" />
-    <Compile Include="Domain\Fire\Sequential.cs" />
-    <Compile Include="Domain\Fire\Spiral.cs" />
-    <Compile Include="Domain\Fire\Staircase.cs" />
+    <Compile Include="Domain\Fire\SequentialStrategy.cs" />
+    <Compile Include="Domain\Fire\SpiralStrategy.cs" />
+    <Compile Include="Domain\Fire\StaircaseStrategy.cs" />
     <Compile Include="Domain\Enums\PlaceTypeEnum.cs" />
     <Compile Include="Application\Heroes\Doctor.cs" />
     <Compile Include="Application\Heroes\Electrician.cs" />

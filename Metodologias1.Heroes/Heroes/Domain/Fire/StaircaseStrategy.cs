@@ -4,7 +4,7 @@ using Domain.Place;
 
 namespace Domain.Fire
 {
-    public class Staircase : IExtinguishFire
+    public class StaircaseStrategy : IExtinguishFire
     {
         public void ExtinguishFire(ISector[][] squareMeters, int waterFlowPerMinute)
         {
