@@ -43,38 +43,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Composites\CompositePlace.cs" />
-    <Compile Include="Decorator\RainingDay.cs" />
-    <Compile Include="Decorator\ScaredPeopleDecoratory.cs" />
-    <Compile Include="Decorator\HotDayDecorator.cs" />
-    <Compile Include="Decorator\BigTreesDecorator.cs" />
-    <Compile Include="Decorator\DryGrassDecorator.cs" />
-    <Compile Include="Decorator\Sector.cs" />
-    <Compile Include="Decorator\SectorDecorator.cs" />
-    <Compile Include="Decorator\WindyDayDecorator.cs" />
-    <Compile Include="Strategies\FiremanStrategies\Sequential.cs" />
-    <Compile Include="Strategies\FiremanStrategies\Spiral.cs" />
-    <Compile Include="Strategies\FiremanStrategies\Staircase.cs" />
-    <Compile Include="Helpers\DecorateSectorHelper.cs" />
-    <Compile Include="Helpers\PlaceTypeEnum.cs" />
-    <Compile Include="Heroes\Doctor.cs" />
-    <Compile Include="Heroes\Electrician.cs" />
-    <Compile Include="Heroes\Firefighter.cs" />
-    <Compile Include="Heroes\Mechanic.cs" />
-    <Compile Include="Heroes\Policeman.cs" />
-    <Compile Include="Interfaces\IExtinguishFire.cs">
+    <Compile Include="Domain\Place\CompositePlace.cs" />
+    <Compile Include="Domain\Place\RainingDayDecorator.cs" />
+    <Compile Include="Domain\Place\ScaredPeopleDecorator.cs" />
+    <Compile Include="Domain\Place\HotDayDecorator.cs" />
+    <Compile Include="Domain\Place\BigTreesDecorator.cs" />
+    <Compile Include="Domain\Place\DryGrassDecorator.cs" />
+    <Compile Include="Domain\Place\Sector.cs" />
+    <Compile Include="Domain\Place\SectorDecorator.cs" />
+    <Compile Include="Domain\Place\WindyDayDecorator.cs" />
+    <Compile Include="Domain\Fire\Sequential.cs" />
+    <Compile Include="Domain\Fire\Spiral.cs" />
+    <Compile Include="Domain\Fire\Staircase.cs" />
+    <Compile Include="Domain\Enums\PlaceTypeEnum.cs" />
+    <Compile Include="Application\Heroes\Doctor.cs" />
+    <Compile Include="Application\Heroes\Electrician.cs" />
+    <Compile Include="Application\Heroes\Firefighter.cs" />
+    <Compile Include="Application\Heroes\Mechanic.cs" />
+    <Compile Include="Application\Heroes\Policeman.cs" />
+    <Compile Include="Domain\Fire\IExtinguishFire.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="Interfaces\IFireObserver.cs" />
-    <Compile Include="Interfaces\IFireObserved.cs" />
-    <Compile Include="Interfaces\IIlluminate.cs" />
-    <Compile Include="Interfaces\IPlace.cs" />
-    <Compile Include="Interfaces\ISector.cs" />
-    <Compile Include="Places\House.cs" />
-    <Compile Include="Places\Square.cs" />
-    <Compile Include="Places\Street.cs" />
-    <Compile Include="Places\StreetCorner.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Domain\Fireman\IFireObserver.cs" />
+    <Compile Include="Domain\Place\IFireObserved.cs" />
+    <Compile Include="Domain\Place\IIlluminate.cs" />
+    <Compile Include="Domain\Place\IPlace.cs" />
+    <Compile Include="Domain\Place\ISector.cs" />
+    <Compile Include="Application\Places\House.cs" />
+    <Compile Include="Application\Places\Square.cs" />
+    <Compile Include="Application\Places\Street.cs" />
+    <Compile Include="Application\Places\StreetCorner.cs" />
+    <Compile Include="Application\CityHeroesMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
