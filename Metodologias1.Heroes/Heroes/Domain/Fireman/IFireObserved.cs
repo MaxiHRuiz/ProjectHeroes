@@ -1,6 +1,4 @@
-﻿using Domain.Fireman;
-
-namespace Domain.Place
+﻿namespace Domain.Place
 {
     public interface IFireObserved
     {

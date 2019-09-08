@@ -1,4 +1,5 @@
 ﻿using System;
+using Domain.Day;
 
 namespace Domain.Place
 {

@@ -44,14 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Place\CompositePlace.cs" />
-    <Compile Include="Domain\Place\RainingDayDecorator.cs" />
+    <Compile Include="Domain\Day\RainingDayDecorator.cs" />
     <Compile Include="Domain\Place\ScaredPeopleDecorator.cs" />
-    <Compile Include="Domain\Place\HotDayDecorator.cs" />
+    <Compile Include="Domain\Day\HotDayDecorator.cs" />
     <Compile Include="Domain\Place\BigTreesDecorator.cs" />
     <Compile Include="Domain\Place\DryGrassDecorator.cs" />
     <Compile Include="Domain\Place\Sector.cs" />
     <Compile Include="Domain\Place\SectorDecorator.cs" />
-    <Compile Include="Domain\Place\WindyDayDecorator.cs" />
+    <Compile Include="Domain\Day\WindyDayDecorator.cs" />
     <Compile Include="Domain\Fire\SequentialStrategy.cs" />
     <Compile Include="Domain\Fire\SpiralStrategy.cs" />
     <Compile Include="Domain\Fire\StaircaseStrategy.cs" />
@@ -65,7 +65,7 @@
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Domain\Fireman\IFireObserver.cs" />
-    <Compile Include="Domain\Place\IFireObserved.cs" />
+    <Compile Include="Domain\Fireman\IFireObserved.cs" />
     <Compile Include="Domain\Place\IIlluminate.cs" />
     <Compile Include="Domain\Place\IPlace.cs" />
     <Compile Include="Domain\Place\ISector.cs" />

@@ -2,7 +2,6 @@
 using Application.Places;
 using Domain.Enums;
 using Domain.Fire;
-using Domain.Fireman;
 using Domain.Place;
 
 namespace Application.Heroes

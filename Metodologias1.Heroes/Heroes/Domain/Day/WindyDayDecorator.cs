@@ -1,6 +1,7 @@
 ﻿using System;
+using Domain.Place;
 
-namespace Domain.Place
+namespace Domain.Day
 {
     class WindyDayDecorator : SectorDecorator
     {

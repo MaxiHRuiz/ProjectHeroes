@@ -1,4 +1,6 @@
-﻿namespace Domain.Place
+﻿using Domain.Place;
+
+namespace Domain.Day
 {
     public class HotDayDecorator : SectorDecorator
     {

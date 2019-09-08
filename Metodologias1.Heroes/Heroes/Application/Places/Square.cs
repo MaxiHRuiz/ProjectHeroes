@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Domain.Fireman;
 using Domain.Place;
 
 namespace Application.Places
