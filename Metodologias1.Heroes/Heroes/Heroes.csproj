@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\RandomValue\Random.cs" />
     <Compile Include="Domain\Place\CompositePlace.cs" />
     <Compile Include="Domain\Day\RainingDayDecorator.cs" />
     <Compile Include="Domain\Place\ScaredPeopleDecorator.cs" />
@@ -74,6 +75,11 @@
     <Compile Include="Application\Places\Street.cs" />
     <Compile Include="Application\Places\StreetCorner.cs" />
     <Compile Include="Application\CityHeroesMain.cs" />
+    <Compile Include="Domain\Police\IPatrol.cs" />
+    <Compile Include="Domain\Police\IPoliceOrder.cs" />
+    <Compile Include="Domain\Police\RequestBackup.cs" />
+    <Compile Include="Domain\Police\PursueCriminal.cs" />
+    <Compile Include="Domain\Police\StopRightThere.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
