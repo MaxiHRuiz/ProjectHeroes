@@ -203,7 +203,7 @@ namespace Heroes
         static void Command()
         {
             var places = new List<IPatrol>();
-            var cop = new Policeman(new StopRightThere());
+            var cop = new Policeman();
             places = CreateMockPlaces(15);
 
             for (int i = 0; i < places.Count; i++)

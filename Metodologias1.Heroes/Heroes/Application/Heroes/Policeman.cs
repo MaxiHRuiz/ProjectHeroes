@@ -7,9 +7,9 @@ namespace Application.Heroes
     {
         private IPoliceOrder command;
 
-        public Policeman(IPoliceOrder command)
+        public Policeman(IPoliceOrder command = null)
         {
-            this.command = command;
+            this.command = command ?? new StopRightThere();
         }
 
         public void PatrolStreet(IPatrol place)
