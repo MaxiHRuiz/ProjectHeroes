@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Doctor\IHeartAttack.cs" />
+    <Compile Include="Domain\Doctor\Passerby.cs" />
+    <Compile Include="Domain\Doctor\RCPTypeB.cs" />
+    <Compile Include="Domain\Doctor\RCPTypeA.cs" />
+    <Compile Include="Domain\Doctor\RCP.cs" />
     <Compile Include="Domain\RandomValue\Random.cs" />
     <Compile Include="Domain\Place\CompositePlace.cs" />
     <Compile Include="Domain\Day\RainingDayDecorator.cs" />
