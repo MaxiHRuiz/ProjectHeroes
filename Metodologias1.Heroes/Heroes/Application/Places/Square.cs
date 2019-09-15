@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Domain.Place;
+using Domain.RandomValue;
+using Heroes.Domain.Police;
 
 namespace Application.Places
 {
-    public class Square : IPlace, IFireObserved, IIlluminate
+    public class Square : IPlace, IFireObserved, IIlluminate, IPatrol
     {
         public string Name { get; set; }
 
@@ -83,6 +85,11 @@ namespace Application.Places
         public override string ToString()
         {
             return $"{this.Name.ToUpper()}, SQUARE";
+        }
+
+        public bool ThereIsSomethingOutOfOrdinary()
+        {
+            return GenerateRandomValue.GetRandom(101) >= 50 ? true : false;
         }
     }
 }

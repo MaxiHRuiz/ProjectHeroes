@@ -1,6 +1,10 @@
-﻿using Application.Heroes;
+﻿using System;
+using System.Collections.Generic;
+using Application.Heroes;
 using Application.Places;
 using Domain.Place;
+using Domain.RandomValue;
+using Heroes.Domain.Police;
 
 namespace Heroes
 {
@@ -8,7 +12,8 @@ namespace Heroes
     {
         static void Main(string[] args)
         {
-            Decorator();
+            Command();
+            Console.ReadKey();
         }
 
         static void Observer()
@@ -193,6 +198,55 @@ namespace Heroes
             square.Street = street;
             square.AddObserver(fireman);
             square.Spark();
+        }
+
+        static void Command()
+        {
+            var places = new List<IPatrol>();
+            var cop = new Policeman();
+            places = CreateMockPlaces(15);
+
+            for (int i = 0; i < places.Count; i++)
+            {
+                if (i == 5)
+                {
+                    cop.ChangeOrder(new PursueCriminal());
+                }
+                else if (i == 10)
+                {
+                    cop.ChangeOrder(new RequestBackup());
+                }
+                cop.PatrolStreet(places[i]);
+            }
+        }
+
+        static List<IPatrol> CreateMockPlaces(int howMany)
+        {
+            var list = new List<IPatrol>();
+
+            for (int i = 0; i < howMany; i++)
+            {
+                var option = GenerateRandomValue.GetRandom(0, 3);
+
+                IPatrol place;
+                switch (option)
+                {
+                    case 0:
+                        place = new StreetCorner(GenerateRandomValue.GetRandom(0,5));
+                        list.Add(place);
+                        break;
+                    case 1:
+                        place = new House(GenerateRandomValue.GetRandom(0, 999), GenerateRandomValue.GetRandom(0, 65), GenerateRandomValue.GetRandom(0, 9));
+                        list.Add(place);
+                        break;
+                    case 2:
+                        place = new Square("", GenerateRandomValue.GetRandom(), GenerateRandomValue.GetRandom(0, 65), GenerateRandomValue.GetRandom(0, 9));
+                        list.Add(place);
+                        break;
+                }
+            }
+
+            return list;
         }
     }
 }

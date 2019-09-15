@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Domain.Place;
+using Domain.RandomValue;
+using Heroes.Domain.Police;
 
 namespace Application.Places
 {
-    public class House : IPlace, IFireObserved
+    public class House : IPlace, IFireObserved, IPatrol
     {
         public int Number { get; set; }
 
@@ -74,6 +76,11 @@ namespace Application.Places
         public override string ToString()
         {
             return $"HOUSE N°{this.Number}";
+        }
+
+        public bool ThereIsSomethingOutOfOrdinary()
+        {
+            return GenerateRandomValue.GetRandom(101) >= 70 ? true : false;
         }
     }
 }

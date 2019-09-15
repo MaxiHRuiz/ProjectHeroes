@@ -1,9 +1,11 @@
 ﻿using System;
 using Domain.Place;
+using Domain.RandomValue;
+using Heroes.Domain.Police;
 
 namespace Application.Places
 {
-    public class StreetCorner: IIlluminate
+    public class StreetCorner: IIlluminate, IPatrol
     {
         public int Semaphores { get; set; }
 
@@ -15,6 +17,11 @@ namespace Application.Places
         public void CheckAndChangeBurntLamps()
         {
             Console.WriteLine($"The corner has {this.Semaphores} semaphores to check...");
+        }
+
+        public bool ThereIsSomethingOutOfOrdinary()
+        {
+            return GenerateRandomValue.GetRandom(101) >= 30 ? true : false;
         }
     }
 }
