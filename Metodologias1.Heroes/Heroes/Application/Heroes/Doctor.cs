@@ -1,12 +1,20 @@
 ﻿using System;
+using Heroes.Domain.Doctor;
 
 namespace Application.Heroes
 {
     public class Doctor
     {
-        public void TreatingHeartAttack()
+        public Doctor(RCP rcp)
         {
-            Console.WriteLine("The doctor is treating an infarct patient.");
+            Rcp = rcp;
+        }
+
+        public RCP Rcp { get; set; }
+
+        public void TreatingHeartAttack(IHeartAttack passerby)
+        {
+            this.Rcp.AttendHeartAttack(passerby);
         }
 
         public void TreatingFainting()

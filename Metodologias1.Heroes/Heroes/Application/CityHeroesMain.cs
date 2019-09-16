@@ -4,6 +4,7 @@ using Application.Heroes;
 using Application.Places;
 using Domain.Place;
 using Domain.RandomValue;
+using Heroes.Domain.Doctor;
 using Heroes.Domain.Police;
 
 namespace Heroes
@@ -12,7 +13,7 @@ namespace Heroes
     {
         static void Main(string[] args)
         {
-            Command();
+            TemplateMethod();
             Console.ReadKey();
         }
 
@@ -218,6 +219,14 @@ namespace Heroes
                 }
                 cop.PatrolStreet(places[i]);
             }
+        }
+
+        static void TemplateMethod()
+        {
+            var doctor = new Doctor(new RCPTypeA());
+            var passerby = new Passerby();
+            doctor.TreatingHeartAttack(passerby);
+
         }
 
         static List<IPatrol> CreateMockPlaces(int howMany)
