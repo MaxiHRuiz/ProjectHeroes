@@ -5,38 +5,7 @@ namespace Heroes.Domain.Doctor
     public class RCPTypeB : RCP
     {
         public const int Retries = 5;
-
-        protected override void CheckPatientStatus(IHeartAttack passerby)
-        {
-            if (!passerby.IsAware())
-            {
-                this.CallAmbulance();
-                this.FindThorax();
-                this.PositionHead();
-
-                var attempts = 0;
-                while (!passerby.IsBreathing() || attempts < Retries)
-                {
-                    this.ChestCompressions();
-                    this.Insufflations();
-
-                    if (passerby.ItHasHeartRhythm())
-                    {
-                        this.UseDefibrillator();
-                    }
-
-                    attempts++;
-                }
-                if (attempts.Equals(5))
-                {
-                    Console.WriteLine("Type B: The doctor gave up and the patient died :(");
-                }
-                else
-                {
-                    Console.WriteLine("The doctor has helped the patient. He seems fine now :)");
-                }
-            }
-        }
+        public int Attempts { get; set; }
 
         protected override void CallAmbulance()
         {
@@ -71,6 +40,19 @@ namespace Heroes.Domain.Doctor
         protected override void UseDefibrillator()
         {
             Console.WriteLine("Type B: The doctor's using the defibrillator...");
+        }
+
+        protected override bool retry()
+        {
+            if (this.Attempts < 5)
+            {
+                this.Attempts++;
+                return true;
+            }
+            else
+            {
+                return false;
+            };
         }
     }
 }

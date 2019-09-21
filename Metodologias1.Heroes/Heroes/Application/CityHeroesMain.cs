@@ -223,7 +223,7 @@ namespace Heroes
 
         static void TemplateMethod()
         {
-            var doctor = new Doctor(new RCPTypeA());
+            var doctor = new Doctor(new RCPTypeB());
             var passerby = new Passerby();
             doctor.TreatingHeartAttack(passerby);
 
