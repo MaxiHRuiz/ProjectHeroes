@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Doctor\ForeignPasserby.cs" />
+    <Compile Include="Domain\Doctor\ForeignPasserbyAdapter.cs" />
     <Compile Include="Domain\Doctor\IHeartAttack.cs" />
     <Compile Include="Domain\Doctor\Passerby.cs" />
     <Compile Include="Domain\Doctor\RCPTypeB.cs" />

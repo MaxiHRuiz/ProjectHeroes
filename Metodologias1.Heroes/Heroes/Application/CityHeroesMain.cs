@@ -13,7 +13,7 @@ namespace Heroes
     {
         static void Main(string[] args)
         {
-            TemplateMethod();
+            Adapter();
             Console.ReadKey();
         }
 
@@ -228,8 +228,15 @@ namespace Heroes
             doctor.TreatingHeartAttack(passerby);
 
         }
+        static void Adapter()
+        {
+            var doctor = new Doctor(new RCPTypeA());
+            var foreignPasserby = new HeroesDeCiudad.ForeignPasserby(pc: 0.20, pb: 0.30, phr: 0.50);
+            var passerby = new ForeignPasserbyAdapter(foreignPasserby);
+            doctor.TreatingHeartAttack(passerby);
+        }
 
-        static List<IPatrol> CreateMockPlaces(int howMany)
+            static List<IPatrol> CreateMockPlaces(int howMany)
         {
             var list = new List<IPatrol>();
 
