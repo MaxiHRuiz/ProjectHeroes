@@ -34,6 +34,11 @@ namespace Heroes.Domain.Doctor
             Console.WriteLine("Type A: The doctor's removing any kind of obstructing airway object from the patient...");
         }
 
+        protected override bool retry()
+        {
+            return true;
+        }
+
         protected override void UseDefibrillator()
         {
             Console.WriteLine("Type A: The doctor's is using the defibrillator...");
