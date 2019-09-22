@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Domain.Place;
 using Domain.RandomValue;
+using Heroes.Domain.Place;
+using Heroes.Domain.Place.BuilderDecorator;
 using Heroes.Domain.Police;
 
 namespace Application.Places
@@ -18,42 +20,23 @@ namespace Application.Places
 
         public Street Street { get; set; }
 
-        private List<IFireObserver> observers = new List<IFireObserver>();
+        public DecoratorBuilder Builder { get; set; }
 
-        public Square(string squareName, double lengthMeters, int trees, int streetlights)
+        private List<IFireObserver> observers = new List<IFireObserver>();
+        
+        public Square(string squareName, double lengthMeters, int trees, int streetlights, DecoratorBuilder builder = null)
         {
             this.Name = squareName;
             this.Area = lengthMeters;
             this.Trees = trees;
             this.Streetlights = streetlights;
+            this.Builder = builder ?? new BasicBuilder();
         }
 
         public ISector[][] GetFields()
         {
             var squareMeters = Math.Sqrt(this.Area);
-            var n = (int)Math.Round(squareMeters);
-            var random = new Random();
-            var fields = new ISector[n][];
-
-            for (int i = 0; i < n; i++)
-            {
-                fields[i] = new ISector[n];
-            }
-
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    int fireDamage = random.Next(100);
-                    int temp = random.Next(30, 45);
-                    int wind = random.Next(80, 250);
-                    int rain = random.Next(1, 500);
-                    var sector = new Sector(fireDamage);
-                    fields[i][j] = sector.DecorateSector(sector, rain, temp, wind);
-                }
-            }
-
-            return fields;
+            return DecoratorDirector.BuildDecorator(this.Area, this.Builder);
         }
 
         public void Spark()

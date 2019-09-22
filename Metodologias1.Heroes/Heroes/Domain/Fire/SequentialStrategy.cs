@@ -29,9 +29,9 @@ namespace Domain.Fire
                     }
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write("Difficulties in the sector:");
+                    Console.Write($"Difficulties in the sector({i},{j}):");
                     Console.ResetColor();
-                    Console.WriteLine($" {squareMeters[i][j].ToString()} - SECTOR: ({i},{j}) -> " + string.Join(" -> ", remainingFireList));
+                    Console.WriteLine($" {squareMeters[i][j].ToString()} - START -> " + string.Join(" -> ", remainingFireList));
                 }
             }
         }

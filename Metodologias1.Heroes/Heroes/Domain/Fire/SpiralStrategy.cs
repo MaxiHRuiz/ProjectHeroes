@@ -43,9 +43,10 @@ namespace Domain.Fire
                     }
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write("Difficulties in the sector:");
+                    Console.Write($"Difficulties in the sector({x},{y}):");
                     Console.ResetColor();
-                    Console.WriteLine($" {squareMeters[x][y].ToString()} - SECTOR: ({x},{y}) -> " + string.Join(" -> ", remainingFireList)); fieldExtinguish--;
+                    Console.WriteLine($" {squareMeters[x][y].ToString()} - START -> " + string.Join(" -> ", remainingFireList));
+                    fieldExtinguish--;
 
                     if (x == top && y == right)
                     {
@@ -75,9 +76,9 @@ namespace Domain.Fire
                     }
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write("Difficulties in the sector:");
+                    Console.Write($"Difficulties in the sector({x},{y}):");
                     Console.ResetColor();
-                    Console.WriteLine($" {squareMeters[x][y].ToString()} - SECTOR: ({x},{y}) -> " + string.Join(" -> ", remainingFireList));
+                    Console.WriteLine($" {squareMeters[x][y].ToString()} - START -> " + string.Join(" -> ", remainingFireList));
                     fieldExtinguish--;
 
                     if (x == down && y == right)
@@ -108,9 +109,9 @@ namespace Domain.Fire
                     }
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write("Difficulties in the sector:");
+                    Console.Write($"Difficulties in the sector({x},{y}):");
                     Console.ResetColor();
-                    Console.WriteLine($" {squareMeters[x][y].ToString()} - SECTOR: ({x},{y}) -> " + string.Join(" -> ", remainingFireList));
+                    Console.WriteLine($" {squareMeters[x][y].ToString()} - START -> " + string.Join(" -> ", remainingFireList));
                     fieldExtinguish--;
 
                     if (x == down && y == left)
@@ -141,9 +142,9 @@ namespace Domain.Fire
                     }
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write("Difficulties in the sector:");
+                    Console.Write($"Difficulties in the sector({x},{y}):");
                     Console.ResetColor();
-                    Console.WriteLine($" {squareMeters[x][y].ToString()} - SECTOR: ({x},{y}) -> " + string.Join(" -> ", remainingFireList));
+                    Console.WriteLine($" {squareMeters[x][y].ToString()} - START -> " + string.Join(" -> ", remainingFireList));
                     fieldExtinguish--;
 
                     if (x == top)
