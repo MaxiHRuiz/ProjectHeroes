@@ -35,7 +35,6 @@ namespace Application.Places
 
         public ISector[][] GetFields()
         {
-            var squareMeters = Math.Sqrt(this.Area);
             return DecoratorDirector.BuildDecorator(this.Area, this.Builder);
         }
 
