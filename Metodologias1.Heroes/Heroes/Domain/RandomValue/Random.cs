@@ -20,5 +20,10 @@ namespace Domain.RandomValue
         {
             return random.Next(minValue, maxValue);
         }
+
+        public static double NextDouble()
+        {
+            return random.NextDouble();
+        }
     }
 }

@@ -5,6 +5,7 @@ using Application.Places;
 using Domain.Place;
 using Domain.RandomValue;
 using Heroes.Domain.Doctor;
+using Heroes.Domain.Place;
 using Heroes.Domain.Police;
 
 namespace Heroes
@@ -13,7 +14,7 @@ namespace Heroes
     {
         static void Main(string[] args)
         {
-            Adapter();
+            Builder();
             Console.ReadKey();
         }
 
@@ -228,6 +229,7 @@ namespace Heroes
             doctor.TreatingHeartAttack(passerby);
 
         }
+
         static void Adapter()
         {
             var doctor = new Doctor(new RCPTypeA());
@@ -236,7 +238,35 @@ namespace Heroes
             doctor.TreatingHeartAttack(passerby);
         }
 
-            static List<IPatrol> CreateMockPlaces(int howMany)
+        static void Builder()
+        {
+            var fireman = new Firefighter();
+            var street = new Street(110, 64, 25);
+            var street2 = new Street(110, 64, 10);
+
+            var simpleDeco = new BasicBuilder();
+            var mixedDeco = new mixedBuilder();
+            var favoDeco = new FavorableBuilder();
+            var unfavoDeco = new UnfavorableBuilder();
+
+            var house1 = new House(101, 16, 5, mixedDeco);
+            house1.Street = street;
+            var house2 = new House(102, 9, 3, favoDeco);
+            house2.Street = street2;
+            var square1 = new Square("Plaza1", 16, 10, 2, unfavoDeco);
+            square1.Street = street;
+            var square2 = new Square("Plaza2", 25, 20, 10, simpleDeco);
+            square2.Street = street2;
+
+            house1.AddObserver(fireman);
+            house2.AddObserver(fireman);
+            square1.AddObserver(fireman);
+            square2.AddObserver(fireman);
+
+            square1.Spark();
+        }
+
+        static List<IPatrol> CreateMockPlaces(int howMany)
         {
             var list = new List<IPatrol>();
 
@@ -248,7 +278,7 @@ namespace Heroes
                 switch (option)
                 {
                     case 0:
-                        place = new StreetCorner(GenerateRandomValue.GetRandom(0,5));
+                        place = new StreetCorner(GenerateRandomValue.GetRandom(0, 5));
                         list.Add(place);
                         break;
                     case 1:
