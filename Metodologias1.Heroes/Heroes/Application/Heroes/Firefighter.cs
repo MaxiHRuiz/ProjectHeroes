@@ -3,10 +3,11 @@ using Application.Places;
 using Domain.Enums;
 using Domain.Fire;
 using Domain.Place;
+using Heroes.Domain.Fireman;
 
 namespace Application.Heroes
 {
-    public class Firefighter : IFireObserver
+    public class Firefighter : IFireObserver, IResponsable
     {
         public IExtinguishFire ExtinguishStrategy { get; set; } = new SequentialStrategy();
 
@@ -38,9 +39,9 @@ namespace Application.Heroes
             this.ExtinguishStrategy = strategy;
         }
 
-        public void SoundAlarm(IPlace place, Street street)
+        public void SoundAlarm(IPlace place)
         {
-            this.PutOutFire(place, street);
+            this.PutOutFire(place, place.Street);
         }
     }
 }

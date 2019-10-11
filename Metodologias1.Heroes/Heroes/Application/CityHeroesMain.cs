@@ -5,6 +5,7 @@ using Application.Places;
 using Domain.Place;
 using Domain.RandomValue;
 using Heroes.Domain.Doctor;
+using Heroes.Domain.Fireman;
 using Heroes.Domain.Place;
 using Heroes.Domain.Police;
 
@@ -14,8 +15,69 @@ namespace Heroes
     {
         static void Main(string[] args)
         {
-            Builder();
+            Iterator();
             Console.ReadKey();
+        }
+
+        static void Iterator()
+        {
+            var A = new House(100, 25, 4);
+            var B = new House(102, 16, 1);
+            var C = new House(104, 34, 5);
+            var D = new House(106, 20, 3);
+            var E = new House(108, 9, 2);
+            var F = new House(109, 25, 4);
+            var G = new Square("G", 16, 2, 5);
+            var H = new Square("H", 16, 2, 5);
+            var I = new Square("I", 16, 2, 5);
+            var J = new Square("J", 36, 5, 4);
+
+            var street = new Street(110, 64, 25);
+            A.Street = street;
+            B.Street = street;
+            C.Street = street;
+            D.Street = street;
+            E.Street = street;
+            F.Street = street;
+            G.Street = street;
+            H.Street = street;
+            I.Street = street;
+            J.Street = street;
+
+            G.Builder = new mixedBuilder();
+            H.Builder = new FavorableBuilder();
+            I.Builder = new UnfavorableBuilder();
+
+            // BOARD
+            var complaintsByBoard = new ComplaintByBoard();
+            A.AddObserver(complaintsByBoard);
+            B.AddObserver(complaintsByBoard);
+            C.AddObserver(complaintsByBoard);
+            D.AddObserver(complaintsByBoard);
+            E.AddObserver(complaintsByBoard);
+            F.AddObserver(complaintsByBoard);
+
+            // WHATSAPP
+            WhatsAppMessage whatsAppList = null;
+            whatsAppList = new WhatsAppMessage(new FireReport(G), whatsAppList);
+            whatsAppList = new WhatsAppMessage(new FireReport(H), whatsAppList);
+            whatsAppList = new WhatsAppMessage(new FireReport(I), whatsAppList);
+            var complaintsByWhatsapp = new ComplaintByWhatsapp(whatsAppList);
+
+            // DESK
+            var complaintsByDesk = new ComplaintByDesk(J);
+
+            B.Spark();
+            F.Spark();
+
+            // TEST
+            var fireman = new Firefighter();
+            var secretary = new FirefighterSecretary(fireman);
+
+            secretary.AttendCompliant(complaintsByBoard);
+            secretary.AttendCompliant(complaintsByDesk);
+            //Console.Clear();
+            secretary.AttendCompliant(complaintsByWhatsapp);
         }
 
         static void Observer()
@@ -188,7 +250,7 @@ namespace Heroes
             city.AddPlace(neighborhoodB);
             #endregion mocks
 
-            elictrician.Checking(city);
+            elictrician.changeBurntLamps(city);
         }
 
         static void Decorator()
