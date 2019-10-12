@@ -1,11 +1,13 @@
 ﻿using System;
+using Heroes.Domain.Compliants;
 using Heroes.Domain.Doctor;
+using Heroes.Domain.Fireman;
 
 namespace Application.Heroes
 {
-    public class Doctor
+    public class Medic : IResponsable
     {
-        public Doctor(RCP rcp)
+        public Medic(RCP rcp, CompliantHandler handler = null)
         {
             Rcp = rcp;
         }

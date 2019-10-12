@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Compliants\BurntLampReport.cs" />
+    <Compile Include="Domain\Compliants\ComplaintList.cs" />
+    <Compile Include="Domain\Compliants\CompliantHandler.cs" />
+    <Compile Include="Domain\Compliants\Operator911.cs" />
+    <Compile Include="Domain\Compliants\RobberyReport.cs" />
+    <Compile Include="Domain\Compliants\HearthAttackReport.cs" />
     <Compile Include="Domain\Day\HotDayFactory.cs" />
     <Compile Include="Domain\Day\RainingDayFactory.cs" />
     <Compile Include="Domain\Day\WindyDayFactory.cs" />
@@ -61,7 +67,7 @@
     <Compile Include="Domain\Fireman\ComplaintByBoard.cs" />
     <Compile Include="Domain\Fireman\CompliantIterator.cs" />
     <Compile Include="Domain\Fireman\FirefighterSecretary.cs" />
-    <Compile Include="Domain\Fireman\FireReport.cs" />
+    <Compile Include="Domain\Compliants\FireReport.cs" />
     <Compile Include="Domain\Fireman\IComplaint.cs" />
     <Compile Include="Domain\Fireman\IComplaints.cs" />
     <Compile Include="Domain\Fireman\IResponsable.cs" />
@@ -91,11 +97,11 @@
     <Compile Include="Domain\Fire\SpiralStrategy.cs" />
     <Compile Include="Domain\Fire\StaircaseStrategy.cs" />
     <Compile Include="Domain\Enums\PlaceTypeEnum.cs" />
-    <Compile Include="Application\Heroes\Doctor.cs" />
+    <Compile Include="Application\Heroes\Medic.cs" />
     <Compile Include="Application\Heroes\Electrician.cs" />
     <Compile Include="Application\Heroes\Firefighter.cs" />
     <Compile Include="Application\Heroes\Mechanic.cs" />
-    <Compile Include="Application\Heroes\Policeman.cs" />
+    <Compile Include="Application\Heroes\Cop.cs" />
     <Compile Include="Domain\Fire\IExtinguishFire.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>

@@ -1,13 +1,14 @@
 ﻿using System;
+using Heroes.Domain.Fireman;
 using Heroes.Domain.Police;
 
 namespace Application.Heroes
 {
-    public class Policeman
+    public class Cop : IResponsable
     {
         private IPoliceOrder command;
 
-        public Policeman(IPoliceOrder command = null)
+        public Cop(IPoliceOrder command = null)
         {
             this.command = command ?? new StopRightThere();
         }

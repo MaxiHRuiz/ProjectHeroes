@@ -4,10 +4,12 @@ using Application.Heroes;
 using Application.Places;
 using Domain.Place;
 using Domain.RandomValue;
+using Heroes.Domain.Compliants;
 using Heroes.Domain.Doctor;
 using Heroes.Domain.Fireman;
 using Heroes.Domain.Place;
 using Heroes.Domain.Police;
+using HeroesDeCiudad;
 
 namespace Heroes
 {
@@ -15,8 +17,120 @@ namespace Heroes
     {
         static void Main(string[] args)
         {
-            Iterator();
+            ChainOfResponsability();
             Console.ReadKey();
+        }
+
+        static void ChainOfResponsability()
+        {
+            var A = new House(100, 25, 4);
+            var B = new House(102, 16, 1);
+            var C = new House(104, 34, 5);
+            var D = new House(106, 20, 3);
+            var E = new House(108, 9, 2);
+            var F = new House(109, 25, 4);
+            var G = new Square("G", 16, 2, 5);
+            var H = new Square("H", 16, 2, 5);
+            var I = new Square("I", 16, 2, 5);
+            var J = new Square("J", 36, 5, 4);
+
+            var street = new Street(110, 64, 25);
+            A.Street = street;
+            B.Street = street;
+            C.Street = street;
+            D.Street = street;
+            E.Street = street;
+            F.Street = street;
+            G.Street = street;
+            H.Street = street;
+            I.Street = street;
+            J.Street = street;
+
+            G.Builder = new mixedBuilder();
+            H.Builder = new FavorableBuilder();
+            I.Builder = new UnfavorableBuilder();
+
+            // BOARD
+            var complaintsByBoard = new ComplaintByBoard();
+            A.AddObserver(complaintsByBoard);
+            B.AddObserver(complaintsByBoard);
+            C.AddObserver(complaintsByBoard);
+            D.AddObserver(complaintsByBoard);
+            E.AddObserver(complaintsByBoard);
+            F.AddObserver(complaintsByBoard);
+
+            // WHATSAPP
+            WhatsAppMessage whatsAppList = null;
+            whatsAppList = new WhatsAppMessage(new FireReport(G), whatsAppList);
+            whatsAppList = new WhatsAppMessage(new FireReport(H), whatsAppList);
+            whatsAppList = new WhatsAppMessage(new FireReport(I), whatsAppList);
+            var complaintsByWhatsapp = new ComplaintByWhatsapp(whatsAppList);
+
+            // DESK
+            var complaintsByDesk = new ComplaintByDesk(J);
+
+            // COMPLAINTS LIST
+            IComplaints list = new ComplaintList();
+            list.ComplaintList = new List<IComplaint>();
+
+            // HEART ATTACK - 2
+            var passerbyReport = new HearthAttackReport();
+            passerbyReport.Pedestrian = new Passerby();
+            list.ComplaintList.Add(passerbyReport);
+
+            var foreignPasserbyReport = new HearthAttackReport();
+            var passerbyAddapter = new ForeignPasserbyAdapter(new ForeignPasserby(pc: 0.20, pb: 0.30, phr: 0.50));
+            foreignPasserbyReport.Pedestrian = passerbyAddapter;
+            list.ComplaintList.Add(foreignPasserbyReport);
+
+            // ROBBERY - 3
+            var robbertyReport1 = new RobberyReport();
+            robbertyReport1.Place = A;
+            list.ComplaintList.Add(robbertyReport1);
+
+            var robbertyReport2 = new RobberyReport();
+            robbertyReport2.Place = B;
+            list.ComplaintList.Add(robbertyReport2);
+
+            var robbertyReport3 = new RobberyReport();
+            robbertyReport3.Place = J;
+            list.ComplaintList.Add(robbertyReport3);
+
+            // BURNT LAMPS - 5 
+            var burntReport1 = new BurntLampReport();
+            burntReport1.Place = street;
+            list.ComplaintList.Add(burntReport1);
+
+            var burntReport2 = new BurntLampReport();
+            burntReport2.Place = street;
+            list.ComplaintList.Add(burntReport2);
+
+            var burntReport3 = new BurntLampReport();
+            burntReport3.Place = street;
+            list.ComplaintList.Add(burntReport3);
+
+            var burntReport4 = new BurntLampReport();
+            burntReport4.Place = street;
+            list.ComplaintList.Add(burntReport4);
+
+            var burntReport5 = new BurntLampReport();
+            burntReport5.Place = street;
+            list.ComplaintList.Add(burntReport5);
+
+
+            B.Spark();
+            F.Spark();
+
+            // TEST
+            var fireman = new Firefighter();
+            var police = new Cop();
+            var electrician = new Electrician();
+            var medic = new Medic(new RCPTypeA());
+
+            //CompliantHandler test = new Medic(new RCPTypeA(), null);
+           
+            //var operator911 = new Operator911(test);
+            //operator911.AttendReport(list);
         }
 
         static void Iterator()
@@ -267,7 +381,7 @@ namespace Heroes
         static void Command()
         {
             var places = new List<IPatrol>();
-            var cop = new Policeman();
+            var cop = new Cop();
             places = CreateMockPlaces(15);
 
             for (int i = 0; i < places.Count; i++)
@@ -286,7 +400,7 @@ namespace Heroes
 
         static void TemplateMethod()
         {
-            var doctor = new Doctor(new RCPTypeB());
+            var doctor = new Medic(new RCPTypeB());
             var passerby = new Passerby();
             doctor.TreatingHeartAttack(passerby);
 
@@ -294,8 +408,8 @@ namespace Heroes
 
         static void Adapter()
         {
-            var doctor = new Doctor(new RCPTypeA());
-            var foreignPasserby = new HeroesDeCiudad.ForeignPasserby(pc: 0.20, pb: 0.30, phr: 0.50);
+            var doctor = new Medic(new RCPTypeA());
+            var foreignPasserby = new ForeignPasserby(pc: 0.20, pb: 0.30, phr: 0.50);
             var passerby = new ForeignPasserbyAdapter(foreignPasserby);
             doctor.TreatingHeartAttack(passerby);
         }

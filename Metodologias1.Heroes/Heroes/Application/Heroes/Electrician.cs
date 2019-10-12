@@ -1,9 +1,10 @@
 ﻿using System;
 using Domain.Place;
+using Heroes.Domain.Fireman;
 
 namespace Application.Heroes
 {
-    public class Electrician
+    public class Electrician : IResponsable
     {
         public void Checking(IIlluminate place)
         {

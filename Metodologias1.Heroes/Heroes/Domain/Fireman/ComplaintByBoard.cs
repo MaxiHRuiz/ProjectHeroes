@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Domain.Place;
+using Heroes.Domain.Compliants;
 
 namespace Heroes.Domain.Fireman
 {
