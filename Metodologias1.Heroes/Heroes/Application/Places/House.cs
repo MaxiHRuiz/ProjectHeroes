@@ -41,7 +41,7 @@ namespace Application.Places
 
             var r = new Random();
             var i = r.Next(this.observers.Count);
-            this.observers[i].SoundAlarm(this, this.Street);
+            this.observers[i].SoundAlarm(this);
         }
 
         public void AddObserver(IFireObserver observer)

@@ -4,6 +4,6 @@ namespace Domain.Place
 {
     public interface IFireObserver
     {
-        void SoundAlarm(IPlace place, Street street);
+        void SoundAlarm(IPlace place);
     }
 }
