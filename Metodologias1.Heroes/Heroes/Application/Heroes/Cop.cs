@@ -1,19 +1,20 @@
 ﻿using System;
+using Heroes.Domain.Compliants;
 using Heroes.Domain.Fireman;
 using Heroes.Domain.Police;
 
 namespace Application.Heroes
 {
-    public class Cop : IResponsable
+    public class Cop : CompliantHandler, IResponsable
     {
         private IPoliceOrder command;
 
-        public Cop(IPoliceOrder command = null)
+        public Cop(IPoliceOrder command = null, CompliantHandler heroe = null) : base(heroe)
         {
             this.command = command ?? new StopRightThere();
         }
 
-        public void PatrolStreet(IPatrol place)
+        public override void PatrolStreet(IPatrol place)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("The cop is patrolling the streets...");

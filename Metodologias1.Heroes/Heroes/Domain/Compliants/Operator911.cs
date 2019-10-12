@@ -16,12 +16,10 @@ namespace Heroes.Domain.Compliants
             var iterator = new CompliantIterator(complaints);
             iterator.First();
 
-            var handler = (CompliantHandler)this.Responsable;
-
             while (!iterator.IsEnd())
             {
                 var compliant = iterator.Current();
-                compliant.Attend(this.Responsable);
+                compliant.Attend(Responsable);
                 iterator.MoveNext();
             }
         }

@@ -8,7 +8,7 @@ namespace Heroes.Domain.Fireman
 
         public WhatsAppMessage NextMessage { get; set; }
 
-        public WhatsAppMessage(FireReport fireReport, WhatsAppMessage message)
+        public WhatsAppMessage(IComplaint fireReport, WhatsAppMessage message)
         {
             Compliant = fireReport;
             NextMessage = message;

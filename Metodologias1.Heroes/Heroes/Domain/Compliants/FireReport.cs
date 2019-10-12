@@ -1,5 +1,4 @@
-﻿using Application.Heroes;
-using Domain.Place;
+﻿using Domain.Place;
 using Heroes.Domain.Fireman;
 
 namespace Heroes.Domain.Compliants
@@ -12,11 +11,13 @@ namespace Heroes.Domain.Compliants
         {
             this.Place = place;
         }
-        
+
         public void Attend(IResponsable responsable)
         {
-            var fireman = (Firefighter)responsable;
-            fireman.PutOutFire(Place, Place.Street);
+            var handler = (CompliantHandler)responsable;
+            handler.PutOutFire(Place, Place.Street);
+            //var fireman = (Firefighter)responsable;
+            //fireman.PutOutFire(Place, Place.Street);
         }
     }
 }

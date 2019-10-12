@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Compliants\BurntLampReport.cs" />
-    <Compile Include="Domain\Compliants\ComplaintList.cs" />
     <Compile Include="Domain\Compliants\CompliantHandler.cs" />
     <Compile Include="Domain\Compliants\Operator911.cs" />
     <Compile Include="Domain\Compliants\RobberyReport.cs" />

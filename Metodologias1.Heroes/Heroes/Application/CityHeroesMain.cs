@@ -49,88 +49,67 @@ namespace Heroes
             G.Builder = new mixedBuilder();
             H.Builder = new FavorableBuilder();
             I.Builder = new UnfavorableBuilder();
-
-            // BOARD
-            var complaintsByBoard = new ComplaintByBoard();
-            A.AddObserver(complaintsByBoard);
-            B.AddObserver(complaintsByBoard);
-            C.AddObserver(complaintsByBoard);
-            D.AddObserver(complaintsByBoard);
-            E.AddObserver(complaintsByBoard);
-            F.AddObserver(complaintsByBoard);
-
+      
             // WHATSAPP
             WhatsAppMessage whatsAppList = null;
             whatsAppList = new WhatsAppMessage(new FireReport(G), whatsAppList);
             whatsAppList = new WhatsAppMessage(new FireReport(H), whatsAppList);
             whatsAppList = new WhatsAppMessage(new FireReport(I), whatsAppList);
-            var complaintsByWhatsapp = new ComplaintByWhatsapp(whatsAppList);
-
-            // DESK
-            var complaintsByDesk = new ComplaintByDesk(J);
-
-            // COMPLAINTS LIST
-            IComplaints list = new ComplaintList();
-            list.ComplaintList = new List<IComplaint>();
 
             // HEART ATTACK - 2
             var passerbyReport = new HearthAttackReport();
             passerbyReport.Pedestrian = new Passerby();
-            list.ComplaintList.Add(passerbyReport);
+            whatsAppList = new WhatsAppMessage(passerbyReport, whatsAppList);
 
             var foreignPasserbyReport = new HearthAttackReport();
             var passerbyAddapter = new ForeignPasserbyAdapter(new ForeignPasserby(pc: 0.20, pb: 0.30, phr: 0.50));
             foreignPasserbyReport.Pedestrian = passerbyAddapter;
-            list.ComplaintList.Add(foreignPasserbyReport);
+            whatsAppList = new WhatsAppMessage(foreignPasserbyReport, whatsAppList);
 
             // ROBBERY - 3
             var robbertyReport1 = new RobberyReport();
             robbertyReport1.Place = A;
-            list.ComplaintList.Add(robbertyReport1);
+            whatsAppList = new WhatsAppMessage(robbertyReport1, whatsAppList);
 
             var robbertyReport2 = new RobberyReport();
             robbertyReport2.Place = B;
-            list.ComplaintList.Add(robbertyReport2);
+            whatsAppList = new WhatsAppMessage(robbertyReport2, whatsAppList);
 
             var robbertyReport3 = new RobberyReport();
             robbertyReport3.Place = J;
-            list.ComplaintList.Add(robbertyReport3);
+            whatsAppList = new WhatsAppMessage(robbertyReport3, whatsAppList);
 
             // BURNT LAMPS - 5 
             var burntReport1 = new BurntLampReport();
             burntReport1.Place = street;
-            list.ComplaintList.Add(burntReport1);
+            whatsAppList = new WhatsAppMessage(burntReport1, whatsAppList);
 
             var burntReport2 = new BurntLampReport();
             burntReport2.Place = street;
-            list.ComplaintList.Add(burntReport2);
+            whatsAppList = new WhatsAppMessage(burntReport2, whatsAppList);
 
             var burntReport3 = new BurntLampReport();
             burntReport3.Place = street;
-            list.ComplaintList.Add(burntReport3);
+            whatsAppList = new WhatsAppMessage(burntReport3, whatsAppList);
 
             var burntReport4 = new BurntLampReport();
             burntReport4.Place = street;
-            list.ComplaintList.Add(burntReport4);
+            whatsAppList = new WhatsAppMessage(burntReport4, whatsAppList);
 
             var burntReport5 = new BurntLampReport();
             burntReport5.Place = street;
-            list.ComplaintList.Add(burntReport5);
+            whatsAppList = new WhatsAppMessage(burntReport5, whatsAppList);
 
-
-            B.Spark();
-            F.Spark();
+            var complaintsByWhatsapp = new ComplaintByWhatsapp(whatsAppList);
 
             // TEST
-            var fireman = new Firefighter();
-            var police = new Cop();
-            var electrician = new Electrician();
-            var medic = new Medic(new RCPTypeA());
+            CompliantHandler handler = new Medic(new RCPTypeA());
+            handler = new Firefighter(handler);
+            handler = new Electrician(handler);
+            handler = new Cop(new RequestBackup(), handler);
 
-            //CompliantHandler test = new Medic(new RCPTypeA(), null);
-           
-            //var operator911 = new Operator911(test);
-            //operator911.AttendReport(list);
+            var operator911 = new Operator911(handler);
+            operator911.AttendReport(complaintsByWhatsapp);
         }
 
         static void Iterator()

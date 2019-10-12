@@ -1,4 +1,4 @@
-﻿using Application.Heroes;
+﻿using System;
 using Heroes.Domain.Doctor;
 using Heroes.Domain.Fireman;
 
@@ -10,8 +10,11 @@ namespace Heroes.Domain.Compliants
 
         public void Attend(IResponsable responsable)
         {
-            var doctor = (Medic)responsable;
-            doctor.TreatingHeartAttack(Pedestrian);
+            var handler = (CompliantHandler)responsable;
+            handler.TreatingHeartAttack(Pedestrian);
+            Console.WriteLine();
+            //var doctor = (Medic)responsable;
+            //doctor.TreatingHeartAttack(Pedestrian);
         }
     }
 }

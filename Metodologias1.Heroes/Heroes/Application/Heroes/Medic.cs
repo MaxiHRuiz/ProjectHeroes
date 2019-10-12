@@ -5,23 +5,26 @@ using Heroes.Domain.Fireman;
 
 namespace Application.Heroes
 {
-    public class Medic : IResponsable
+    public class Medic : CompliantHandler, IResponsable
     {
-        public Medic(RCP rcp, CompliantHandler handler = null)
+        public Medic(RCP rcp, CompliantHandler handler = null): base(handler)
         {
             Rcp = rcp;
         }
 
         public RCP Rcp { get; set; }
 
-        public void TreatingHeartAttack(IHeartAttack passerby)
+        public override void TreatingHeartAttack(IHeartAttack passerby)
         {
+            TreatingFainting();
             this.Rcp.AttendHeartAttack(passerby);
         }
 
         public void TreatingFainting()
         {
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("The doctor is treating the fainted patient.");
+            Console.ResetColor();
         }
     }
 }
