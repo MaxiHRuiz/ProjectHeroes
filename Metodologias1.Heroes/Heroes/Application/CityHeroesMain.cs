@@ -6,9 +6,11 @@ using Domain.Place;
 using Domain.RandomValue;
 using Heroes.Domain.Compliants;
 using Heroes.Domain.Doctor;
+using Heroes.Domain.FactoryHeroes;
 using Heroes.Domain.Fireman;
 using Heroes.Domain.Place;
 using Heroes.Domain.Police;
+using Heroes.Domain.Quarter;
 using HeroesDeCiudad;
 
 namespace Heroes
@@ -17,8 +19,27 @@ namespace Heroes
     {
         static void Main(string[] args)
         {
-            ChainOfResponsability();
+            AbstractFactory();
             Console.ReadKey();
+        }
+
+        static void AbstractFactory()
+        {
+            var copFactory = new CopFactory();
+            var quarter = CreateHeroe(copFactory);
+            var personal = (Cop)quarter.GetPersonal();
+            personal.PatrolStreet(new House(100, 25, 4));
+            quarter.AddResponsable(personal);
+            quarter.AddTool(personal.Tool);
+            quarter.AddVehicle(personal.Vehicle);
+
+            var fireFactory = new FireFighterFactory();
+            quarter = CreateHeroe(fireFactory);
+            var personal2 = (Firefighter)quarter.GetPersonal();
+            personal2.PutOutFire(new House(100, 25, 4), new Street(25, 4, 10));
+            quarter.AddResponsable(personal);
+            quarter.AddTool(personal.Tool);
+            quarter.AddVehicle(personal.Vehicle);
         }
 
         static void ChainOfResponsability()
@@ -448,6 +469,16 @@ namespace Heroes
             }
 
             return list;
+        }
+
+        static IQuarter CreateHeroe(IHeroesFactory factory)
+        {
+            var quarter = factory.CreateQuarter();
+            quarter.AddResponsable(factory.CreateHeroe());
+            quarter.AddTool(factory.CreateTool());
+            quarter.AddVehicle(factory.CreateVehicle());
+
+            return quarter;
         }
     }
 }

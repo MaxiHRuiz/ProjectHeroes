@@ -5,11 +5,17 @@ using Domain.Fire;
 using Domain.Place;
 using Heroes.Domain.Compliants;
 using Heroes.Domain.Fireman;
+using Heroes.Domain.Quarter.Tool;
+using Heroes.Domain.Quarter.Vehicle;
 
 namespace Application.Heroes
 {
     public class Firefighter : CompliantHandler, IFireObserver, IResponsable
     {
+        public ITool Tool { get; set; }
+
+        public IVehicle Vehicle { get; set; }
+
         public IExtinguishFire ExtinguishStrategy { get; set; } = new SequentialStrategy();
 
         public Firefighter(CompliantHandler handler = null) : base(handler) { }
@@ -30,11 +36,16 @@ namespace Application.Heroes
             Console.WriteLine("The fireman is putting out the fire...\n");
             Console.ResetColor();
 
+            this.Vehicle.Drive();
+            this.Vehicle.TurnOnSiren();
+            this.Tool.Use();
             this.ExtinguishStrategy.ExtinguishFire(place.GetFields(), street.WaterFlowPerMinute);
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine($"\nThe fire at {place.ToString()} was put out!!!");
+            Console.WriteLine($"\nThe fire at {place.ToString()} was put out!!!\n");
             Console.ResetColor();
+
+            this.Tool.PutAway();
         }
 
         public void GetCatOutOfTree()

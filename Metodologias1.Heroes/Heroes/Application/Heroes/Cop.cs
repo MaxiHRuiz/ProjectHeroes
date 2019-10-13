@@ -2,11 +2,17 @@
 using Heroes.Domain.Compliants;
 using Heroes.Domain.Fireman;
 using Heroes.Domain.Police;
+using Heroes.Domain.Quarter.Tool;
+using Heroes.Domain.Quarter.Vehicle;
 
 namespace Application.Heroes
 {
     public class Cop : CompliantHandler, IResponsable
     {
+        public ITool Tool { get; set; }
+
+        public IVehicle Vehicle { get; set; }
+
         private IPoliceOrder command;
 
         public Cop(IPoliceOrder command = null, CompliantHandler heroe = null) : base(heroe)
@@ -20,9 +26,13 @@ namespace Application.Heroes
             Console.WriteLine("The cop is patrolling the streets...");
             Console.ResetColor();
 
+            this.Vehicle.Drive();
+            this.Vehicle.TurnOnSiren();
             if (place.ThereIsSomethingOutOfOrdinary())
             {
+                this.Tool.Use();
                 this.command.Execute();
+                this.Tool.PutAway();
             }
             else
             {
