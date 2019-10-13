@@ -1,4 +1,6 @@
-﻿namespace Heroes.Domain.Fireman
+﻿using Heroes.Domain.Compliants;
+
+namespace Heroes.Domain.Fireman
 {
     public class WhatsAppMessage: IComplaint
     {
@@ -6,7 +8,7 @@
 
         public WhatsAppMessage NextMessage { get; set; }
 
-        public WhatsAppMessage(FireReport fireReport, WhatsAppMessage message)
+        public WhatsAppMessage(IComplaint fireReport, WhatsAppMessage message)
         {
             Compliant = fireReport;
             NextMessage = message;

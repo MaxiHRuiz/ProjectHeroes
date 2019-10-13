@@ -3,15 +3,18 @@ using Application.Places;
 using Domain.Enums;
 using Domain.Fire;
 using Domain.Place;
+using Heroes.Domain.Compliants;
 using Heroes.Domain.Fireman;
 
 namespace Application.Heroes
 {
-    public class Firefighter : IFireObserver, IResponsable
+    public class Firefighter : CompliantHandler, IFireObserver, IResponsable
     {
         public IExtinguishFire ExtinguishStrategy { get; set; } = new SequentialStrategy();
 
-        public void PutOutFire(IPlace place, Street street)
+        public Firefighter(CompliantHandler handler = null) : base(handler) { }
+
+        public override void PutOutFire(IPlace place, Street street)
         {
             Enum.TryParse(place.GetType().Name, out PlaceTypeEnum placeType);
             switch (placeType)
@@ -23,10 +26,15 @@ namespace Application.Heroes
                     ChangeExtinguishStrategy(new SpiralStrategy());
                     break;
             }
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("The fireman is putting out the fire...\n");
+            Console.ResetColor();
+
             this.ExtinguishStrategy.ExtinguishFire(place.GetFields(), street.WaterFlowPerMinute);
+
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine($"\nThe fire at {place.ToString()} was put out!!!");
+            Console.ResetColor();
         }
 
         public void GetCatOutOfTree()
