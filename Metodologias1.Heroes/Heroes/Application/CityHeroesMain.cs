@@ -19,8 +19,26 @@ namespace Heroes
     {
         static void Main(string[] args)
         {
-            AbstractFactory();
+            Singleton();
             Console.ReadKey();
+        }
+
+        static void Singleton()
+        {
+            var copFactory = new CopFactory();
+            var quarter = CreateHeroe(copFactory);
+
+            for (int i = 0; i < 4; i++)
+            {
+                quarter.AddResponsable(copFactory.CreateHeroe());
+                quarter.AddTool(copFactory.CreateTool());
+                quarter.AddVehicle(copFactory.CreateVehicle());
+            }
+
+            IResponsable b1 = quarter.GetPersonal();
+            IResponsable b2 = quarter.GetPersonal();
+            IResponsable b3 = quarter.GetPersonal();
+            IResponsable b4 = quarter.GetPersonal();
         }
 
         static void AbstractFactory()
@@ -37,9 +55,9 @@ namespace Heroes
             quarter = CreateHeroe(fireFactory);
             var personal2 = (Firefighter)quarter.GetPersonal();
             personal2.PutOutFire(new House(100, 25, 4), new Street(25, 4, 10));
-            quarter.AddResponsable(personal);
-            quarter.AddTool(personal.Tool);
-            quarter.AddVehicle(personal.Vehicle);
+            quarter.AddResponsable(personal2);
+            quarter.AddTool(personal2.Tool);
+            quarter.AddVehicle(personal2.Vehicle);
         }
 
         static void ChainOfResponsability()
@@ -70,7 +88,7 @@ namespace Heroes
             G.Builder = new mixedBuilder();
             H.Builder = new FavorableBuilder();
             I.Builder = new UnfavorableBuilder();
-      
+
             // WHATSAPP
             WhatsAppMessage whatsAppList = null;
             whatsAppList = new WhatsAppMessage(new FireReport(G), whatsAppList);

@@ -15,7 +15,7 @@ namespace Heroes.Domain.FactoryHeroes
 
         public IQuarter CreateQuarter()
         {
-            return new FireStation();
+            return FireStation.GetInstance();
         }
 
         public ITool CreateTool()

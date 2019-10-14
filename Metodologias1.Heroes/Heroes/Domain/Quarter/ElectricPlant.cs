@@ -10,13 +10,15 @@ namespace Heroes.Domain.Quarter
 {
     public class ElectricPlant : IQuarter
     {
+        private static ElectricPlant electricPlant = null;
+
         public List<ITool> Tools { get; set; }
 
         public List<IVehicle> Vehicles { get; set; }
 
         public List<IResponsable> Electricians { get; set; }
 
-        public ElectricPlant()
+        private ElectricPlant()
         {
             this.Tools = new List<ITool>();
             this.Vehicles = new List<IVehicle>();
@@ -50,6 +52,16 @@ namespace Heroes.Domain.Quarter
             this.Tools.Remove(this.Tools.Last());
 
             return electrician;
+        }
+
+        public static ElectricPlant GetInstance()
+        {
+            if (electricPlant == null)
+            {
+                electricPlant = new ElectricPlant();
+            }
+
+            return electricPlant;
         }
     }
 }
