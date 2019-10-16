@@ -10,13 +10,15 @@ namespace Heroes.Domain.Quarter
 {
     public class Hospital : IQuarter
     {
+        private static Hospital hospital = null;
+
         public List<ITool> Tools { get; set; }
 
         public List<IVehicle> Vehicles { get; set; }
 
         public List<IResponsable> Medics { get; set; }
 
-        public Hospital()
+        private Hospital()
         {
             this.Tools = new List<ITool>();
             this.Vehicles = new List<IVehicle>();
@@ -50,6 +52,16 @@ namespace Heroes.Domain.Quarter
             this.Tools.Remove(this.Tools.Last());
 
             return medic;
+        }
+
+        public static Hospital GetInstance()
+        {
+            if (hospital == null)
+            {
+                hospital = new Hospital();
+            }
+
+            return hospital;
         }
     }
 }

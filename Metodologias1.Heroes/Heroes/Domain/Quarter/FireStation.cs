@@ -10,13 +10,15 @@ namespace Heroes.Domain.Quarter
 {
     public class FireStation : IQuarter
     {
+        private static FireStation fireStation = null;
+
         public List<ITool> Tools { get; set; }
 
         public List<IVehicle> Vehicles { get; set; }
 
         public List<IResponsable> FireFighters { get; set; }
 
-        public FireStation()
+        private FireStation()
         {
             this.Tools = new List<ITool>();
             this.Vehicles = new List<IVehicle>();
@@ -50,6 +52,16 @@ namespace Heroes.Domain.Quarter
             this.Tools.Remove(this.Tools.Last());
 
             return fireFighter;
+        }
+
+        public static FireStation GetInstance()
+        {
+            if (fireStation == null)
+            {
+                fireStation = new FireStation();
+            }
+
+            return fireStation;
         }
     }
 }

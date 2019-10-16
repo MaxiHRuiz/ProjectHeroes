@@ -10,13 +10,15 @@ namespace Heroes.Domain.Quarter
 {
     public class PoliceStation : IQuarter
     {
+        private static PoliceStation policeStation = null;
+
         public List<ITool> Tools { get; set; }
 
         public List<IVehicle> Vehicles { get; set; }
 
         public List<IResponsable> Cops { get; set; }
 
-        public PoliceStation()
+        private PoliceStation()
         {
             this.Tools = new List<ITool>();
             this.Vehicles = new List<IVehicle>();
@@ -40,16 +42,26 @@ namespace Heroes.Domain.Quarter
 
         public IResponsable GetPersonal()
         {
-            var cop = (Cop)this.Cops.Last();
-            this.Cops.Remove(this.Cops.Last());
+            var cop = (Cop)policeStation.Cops.Last();
+            policeStation.Cops.Remove(this.Cops.Last());
 
-            cop.Vehicle = this.Vehicles.Last();
-            cop.Tool = this.Tools.Last();
+            cop.Vehicle = policeStation.Vehicles.Last();
+            cop.Tool = policeStation.Tools.Last();
 
-            this.Vehicles.Remove(this.Vehicles.Last());
-            this.Tools.Remove(this.Tools.Last());
+            this.Vehicles.Remove(policeStation.Vehicles.Last());
+            this.Tools.Remove(policeStation.Tools.Last());
 
             return cop;
+        }
+
+        public static PoliceStation GetInstance()
+        {
+            if (policeStation == null)
+            {
+                policeStation = new PoliceStation();
+            }
+
+            return policeStation;
         }
     }
 }
