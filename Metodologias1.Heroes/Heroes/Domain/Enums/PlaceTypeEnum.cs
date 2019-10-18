@@ -1,8 +1,9 @@
 ﻿namespace Domain.Enums
 {
-    public enum PlaceTypeEnum
+    public enum FireFighterStrategyEnum
     {
-        House,
-        Square
+        Sequential,
+        StairCase,
+        Spiral
     }
 }

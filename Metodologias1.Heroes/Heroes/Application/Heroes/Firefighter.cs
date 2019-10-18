@@ -56,6 +56,7 @@ namespace Application.Heroes
         public void ChangeExtinguishStrategy(IExtinguishFire strategy)
         {
             this.ExtinguishStrategy = strategy;
+            Console.WriteLine($"Strategy changed to {strategy.ToString()}.");
         }
 
         public void SoundAlarm(IPlace place)

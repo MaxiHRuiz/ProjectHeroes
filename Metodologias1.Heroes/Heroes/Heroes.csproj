@@ -61,6 +61,7 @@
     <Compile Include="Domain\Doctor\RCPTypeA.cs" />
     <Compile Include="Domain\Doctor\RCP.cs" />
     <Compile Include="Domain\Enums\DecoratorTypeEnum.cs" />
+    <Compile Include="Domain\Enums\FireFighterStrategyEnum.cs" />
     <Compile Include="Domain\FactoryHeroes\FireFighterFactory.cs" />
     <Compile Include="Domain\FactoryHeroes\MedicFactory.cs" />
     <Compile Include="Domain\FactoryHeroes\ElectricianFactory.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Domain\Fireman\CompliantIterator.cs" />
     <Compile Include="Domain\Fireman\FirefighterSecretary.cs" />
     <Compile Include="Domain\Compliants\FireReport.cs" />
+    <Compile Include="Domain\Fireman\FiremanProxy\FiremanProxy.cs" />
     <Compile Include="Domain\Fireman\IComplaint.cs" />
     <Compile Include="Domain\Fireman\IComplaints.cs" />
     <Compile Include="Domain\Fireman\IResponsable.cs" />
