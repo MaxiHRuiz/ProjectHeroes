@@ -161,5 +161,10 @@ namespace Domain.Fire
                 }
             }
         }
+
+        public override string ToString()
+        {
+            return "Spiral";
+        }
     }
 }

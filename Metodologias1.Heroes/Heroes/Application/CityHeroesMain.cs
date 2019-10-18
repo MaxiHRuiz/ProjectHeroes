@@ -8,6 +8,7 @@ using Heroes.Domain.Compliants;
 using Heroes.Domain.Doctor;
 using Heroes.Domain.FactoryHeroes;
 using Heroes.Domain.Fireman;
+using Heroes.Domain.Fireman.FiremanProxy;
 using Heroes.Domain.Place;
 using Heroes.Domain.Police;
 using Heroes.Domain.Quarter;
@@ -19,8 +20,100 @@ namespace Heroes
     {
         static void Main(string[] args)
         {
-            Singleton();
+            AbstractFactory();
             Console.ReadKey();
+        }
+
+
+        static void Proxy()
+        {
+            var A = new House(100, 25, 4);
+            var B = new House(102, 16, 1);
+            var C = new House(104, 34, 5);
+            var D = new House(106, 20, 3);
+            var E = new House(108, 9, 2);
+            var F = new House(109, 25, 4);
+            var G = new Square("G", 16, 2, 5);
+            var H = new Square("H", 16, 2, 5);
+            var I = new Square("I", 16, 2, 5);
+            var J = new Square("J", 36, 5, 4);
+
+            var street = new Street(110, 64, 25);
+            A.Street = street;
+            B.Street = street;
+            C.Street = street;
+            D.Street = street;
+            E.Street = street;
+            F.Street = street;
+            G.Street = street;
+            H.Street = street;
+            I.Street = street;
+            J.Street = street;
+
+            G.Builder = new mixedBuilder();
+            H.Builder = new FavorableBuilder();
+            I.Builder = new UnfavorableBuilder();
+
+            // WHATSAPP
+            WhatsAppMessage whatsAppList = null;
+            whatsAppList = new WhatsAppMessage(new FireReport(G), whatsAppList);
+            whatsAppList = new WhatsAppMessage(new FireReport(H), whatsAppList);
+            whatsAppList = new WhatsAppMessage(new FireReport(I), whatsAppList);
+
+            // HEART ATTACK - 2
+            var passerbyReport = new HearthAttackReport();
+            passerbyReport.Pedestrian = new Passerby();
+            whatsAppList = new WhatsAppMessage(passerbyReport, whatsAppList);
+
+            var foreignPasserbyReport = new HearthAttackReport();
+            var passerbyAddapter = new ForeignPasserbyAdapter(new ForeignPasserby(pc: 0.20, pb: 0.30, phr: 0.50));
+            foreignPasserbyReport.Pedestrian = passerbyAddapter;
+            whatsAppList = new WhatsAppMessage(foreignPasserbyReport, whatsAppList);
+
+            // ROBBERY - 3
+            var robbertyReport1 = new RobberyReport();
+            robbertyReport1.Place = A;
+            whatsAppList = new WhatsAppMessage(robbertyReport1, whatsAppList);
+
+            var robbertyReport2 = new RobberyReport();
+            robbertyReport2.Place = B;
+            whatsAppList = new WhatsAppMessage(robbertyReport2, whatsAppList);
+
+            var robbertyReport3 = new RobberyReport();
+            robbertyReport3.Place = J;
+            whatsAppList = new WhatsAppMessage(robbertyReport3, whatsAppList);
+
+            // BURNT LAMPS - 5 
+            var burntReport1 = new BurntLampReport();
+            burntReport1.Place = street;
+            whatsAppList = new WhatsAppMessage(burntReport1, whatsAppList);
+
+            var burntReport2 = new BurntLampReport();
+            burntReport2.Place = street;
+            whatsAppList = new WhatsAppMessage(burntReport2, whatsAppList);
+
+            var burntReport3 = new BurntLampReport();
+            burntReport3.Place = street;
+            whatsAppList = new WhatsAppMessage(burntReport3, whatsAppList);
+
+            var burntReport4 = new BurntLampReport();
+            burntReport4.Place = street;
+            whatsAppList = new WhatsAppMessage(burntReport4, whatsAppList);
+
+            var burntReport5 = new BurntLampReport();
+            burntReport5.Place = street;
+            whatsAppList = new WhatsAppMessage(burntReport5, whatsAppList);
+
+            var complaintsByWhatsapp = new ComplaintByWhatsapp(whatsAppList);
+
+            // TEST
+            //CompliantHandler handler = new Medic(new RCPTypeA());
+            var handler = new FiremanProxy().CreateFirefighter();
+            //handler = new Electrician(handler);
+            //handler = new Cop(new RequestBackup(), handler);
+
+            var operator911 = new Operator911(handler);
+            operator911.AttendReport(complaintsByWhatsapp);
         }
 
         static void Singleton()
@@ -58,6 +151,14 @@ namespace Heroes
             quarter.AddResponsable(personal2);
             quarter.AddTool(personal2.Tool);
             quarter.AddVehicle(personal2.Vehicle);
+
+            var electriciaFactory = new ElectricianFactory();
+            quarter = CreateHeroe(electriciaFactory);
+            var personal3 = (Electrician)quarter.GetPersonal();
+            personal3.changeBurntLamps(new Street(25, 4, 10));
+            quarter.AddResponsable(personal3);
+            quarter.AddTool(personal3.Tool);
+            quarter.AddVehicle(personal3.Vehicle);
         }
 
         static void ChainOfResponsability()
@@ -144,7 +245,7 @@ namespace Heroes
             // TEST
             CompliantHandler handler = new Medic(new RCPTypeA());
             handler = new Firefighter(handler);
-            handler = new Electrician(handler);
+            //handler = new Electrician(handler);
             handler = new Cop(new RequestBackup(), handler);
 
             var operator911 = new Operator911(handler);
