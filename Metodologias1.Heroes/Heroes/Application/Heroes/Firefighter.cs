@@ -4,6 +4,7 @@ using Domain.Enums;
 using Domain.Fire;
 using Domain.Place;
 using Heroes.Domain.Compliants;
+using Heroes.Domain.Enums;
 using Heroes.Domain.Fireman;
 using Heroes.Domain.Quarter.Tool;
 using Heroes.Domain.Quarter.Vehicle;

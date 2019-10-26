@@ -1,23 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Heroes.Domain.Fireman
+namespace Heroes.Domain.Fireman.CompliantIterator
 {
-    public class CompliantIterator
+    public class IteratorBoard : ICompliantIterator
     {
         public int CurrentCompliant { get; set; }
         public List<IComplaint> CompliantList { get; set; }
 
-        public CompliantIterator(IComplaints compliants)
+        public IteratorBoard(List<IComplaint> complaints)
         {
             this.CurrentCompliant = 0;
-            this.CompliantList = compliants.ComplaintList;
+            this.CompliantList = complaints;
         }
 
         public void First()
         {
             this.CurrentCompliant = 0;
         }
+
         public void MoveNext()
         {
             this.CurrentCompliant++;

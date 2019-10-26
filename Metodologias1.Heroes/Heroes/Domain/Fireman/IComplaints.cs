@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Heroes.Domain.Fireman.CompliantIterator;
 
 namespace Heroes.Domain.Fireman
 {
     public interface IComplaints
     {
-        List<IComplaint> ComplaintList { get; set; }
+        ICompliantIterator GetIterator();
     }
 }

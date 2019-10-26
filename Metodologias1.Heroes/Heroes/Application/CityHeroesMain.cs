@@ -12,6 +12,8 @@ using Heroes.Domain.Fireman.FiremanProxy;
 using Heroes.Domain.Place;
 using Heroes.Domain.Police;
 using Heroes.Domain.Quarter;
+using Heroes.Domain.Quarter.Tool;
+using Heroes.Domain.Quarter.Vehicle;
 using HeroesDeCiudad;
 
 namespace Heroes
@@ -20,7 +22,7 @@ namespace Heroes
     {
         static void Main(string[] args)
         {
-            AbstractFactory();
+            Decorator();
             Console.ReadKey();
         }
 
@@ -305,11 +307,13 @@ namespace Heroes
 
             // TEST
             var fireman = new Firefighter();
+            fireman.Vehicle = new FireTruck();
+            fireman.Tool = new WaterHose();
             var secretary = new FirefighterSecretary(fireman);
 
             secretary.AttendCompliant(complaintsByBoard);
             secretary.AttendCompliant(complaintsByDesk);
-            //Console.Clear();
+            Console.Clear();
             secretary.AttendCompliant(complaintsByWhatsapp);
         }
 
@@ -489,12 +493,12 @@ namespace Heroes
         static void Decorator()
         {
             var fireman = new Firefighter();
-            var square = new Square("San Martin", 9, 5, 4);
-            //var house = new House(102, 9, 1);
+            //var square = new Square("San Martin", 9, 5, 4);
+            var house = new House(102, 9, 1, new mixedBuilder());
             var street = new Street(110, 64, 15);
-            square.Street = street;
-            square.AddObserver(fireman);
-            square.Spark();
+            house.Street = street;
+            house.AddObserver(fireman);
+            house.Spark();
         }
 
         static void Command()

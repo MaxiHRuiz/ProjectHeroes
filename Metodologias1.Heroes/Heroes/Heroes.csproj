@@ -61,7 +61,7 @@
     <Compile Include="Domain\Doctor\RCPTypeA.cs" />
     <Compile Include="Domain\Doctor\RCP.cs" />
     <Compile Include="Domain\Enums\DecoratorTypeEnum.cs" />
-    <Compile Include="Domain\Enums\FireFighterStrategyEnum.cs" />
+    <Compile Include="Domain\Enums\PlaceTypeEnum.cs" />
     <Compile Include="Domain\FactoryHeroes\FireFighterFactory.cs" />
     <Compile Include="Domain\FactoryHeroes\MedicFactory.cs" />
     <Compile Include="Domain\FactoryHeroes\ElectricianFactory.cs" />
@@ -70,7 +70,10 @@
     <Compile Include="Domain\Fireman\ComplaintByDesk.cs" />
     <Compile Include="Domain\Fireman\ComplaintByWhatsapp.cs" />
     <Compile Include="Domain\Fireman\ComplaintByBoard.cs" />
-    <Compile Include="Domain\Fireman\CompliantIterator.cs" />
+    <Compile Include="Domain\Fireman\CompliantIterator\IteratorDesk.cs" />
+    <Compile Include="Domain\Fireman\CompliantIterator\IteratorBoard.cs" />
+    <Compile Include="Domain\Fireman\CompliantIterator\ICompliantIterator.cs" />
+    <Compile Include="Domain\Fireman\CompliantIterator\IteratorWhatsapp.cs" />
     <Compile Include="Domain\Fireman\FirefighterSecretary.cs" />
     <Compile Include="Domain\Compliants\FireReport.cs" />
     <Compile Include="Domain\Fireman\FiremanProxy\FiremanProxy.cs" />
@@ -117,7 +120,7 @@
     <Compile Include="Domain\Fire\SequentialStrategy.cs" />
     <Compile Include="Domain\Fire\SpiralStrategy.cs" />
     <Compile Include="Domain\Fire\StaircaseStrategy.cs" />
-    <Compile Include="Domain\Enums\PlaceTypeEnum.cs" />
+    <Compile Include="Domain\Enums\FireFighterStrategyEnum.cs" />
     <Compile Include="Application\Heroes\Medic.cs" />
     <Compile Include="Application\Heroes\Electrician.cs" />
     <Compile Include="Application\Heroes\Firefighter.cs" />
