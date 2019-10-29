@@ -1,4 +1,5 @@
 ﻿using Application.Heroes;
+using Heroes.Domain.Compliants;
 using Heroes.Domain.Fireman;
 using Heroes.Domain.Quarter;
 using Heroes.Domain.Quarter.Tool;
@@ -6,26 +7,26 @@ using Heroes.Domain.Quarter.Vehicle;
 
 namespace Heroes.Domain.FactoryHeroes
 {
-    public class CopFactory : IHeroesFactory
+    public class FireFighterFactory : IHeroesFactory
     {
-        public IResponsable CreateHeroe()
+        public IResponsable CreateHeroe(CompliantHandler handler)
         {
-            return new Cop();
+            return new Firefighter(handler);
         }
 
         public IQuarter CreateQuarter()
         {
-            return PoliceStation.GetInstance();
+            return FireStation.GetInstance();
         }
 
         public ITool CreateTool()
         {
-            return new Gun();
+            return new WaterHose();
         }
 
         public IVehicle CreateVehicle()
         {
-            return new PolicePatrolCar();
+            return new FireTruck();
         }
     }
 }

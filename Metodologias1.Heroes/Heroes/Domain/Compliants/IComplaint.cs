@@ -1,6 +1,6 @@
-﻿using Domain.Place;
+﻿using Heroes.Domain.Fireman;
 
-namespace Heroes.Domain.Fireman
+namespace Heroes.Domain.Compliants
 {
     public interface IComplaint
     {

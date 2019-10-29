@@ -1,5 +1,5 @@
 ﻿using Application.Heroes;
-using Heroes.Domain.Doctor;
+using Heroes.Domain.Compliants;
 using Heroes.Domain.Fireman;
 using Heroes.Domain.Quarter;
 using Heroes.Domain.Quarter.Tool;
@@ -7,26 +7,26 @@ using Heroes.Domain.Quarter.Vehicle;
 
 namespace Heroes.Domain.FactoryHeroes
 {
-    public class MedicFactory : IHeroesFactory
+    public class CopFactory : IHeroesFactory
     {
-        public IResponsable CreateHeroe()
+        public IResponsable CreateHeroe(CompliantHandler handler = null)
         {
-            return new Medic(new RCPTypeA());
+            return new Cop(heroe: handler);
         }
 
         public IQuarter CreateQuarter()
         {
-            return Hospital.GetInstance();
+            return PoliceStation.GetInstance();
         }
 
         public ITool CreateTool()
         {
-            return new Defibrillator();
+            return new Gun();
         }
 
         public IVehicle CreateVehicle()
         {
-            return new Ambulance();
+            return new PolicePatrolCar();
         }
     }
 }

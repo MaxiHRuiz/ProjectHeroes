@@ -48,6 +48,7 @@ namespace Application.Heroes
         public void ChangeOrder(IPoliceOrder command)
         {
             this.command = command;
+            Console.WriteLine($"Command changed to {command.ToString()}.");
         }
     }
 }

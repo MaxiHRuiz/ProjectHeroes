@@ -1,4 +1,5 @@
 ﻿using Application.Heroes;
+using Heroes.Domain.Compliants;
 
 namespace Heroes.Domain.Fireman
 {
@@ -13,7 +14,7 @@ namespace Heroes.Domain.Fireman
 
         public void AttendCompliant(IComplaints compliants)
         {
-            var iterator = new CompliantIterator(compliants);
+            var iterator = compliants.GetIterator();
             iterator.First();
 
             while (!iterator.IsEnd())

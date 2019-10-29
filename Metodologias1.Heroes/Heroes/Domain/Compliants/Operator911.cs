@@ -13,7 +13,7 @@ namespace Heroes.Domain.Compliants
 
         public void AttendReport(IComplaints complaints)
         {
-            var iterator = new CompliantIterator(complaints);
+            var iterator = complaints.GetIterator();
             iterator.First();
 
             while (!iterator.IsEnd())

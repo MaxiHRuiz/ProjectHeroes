@@ -17,7 +17,6 @@ namespace Heroes.Domain.Fireman
         public void Attend(IResponsable responsable)
         {
             Compliant.Attend(responsable);
-            NextMessage?.Attend(responsable);
         }
     }
 }

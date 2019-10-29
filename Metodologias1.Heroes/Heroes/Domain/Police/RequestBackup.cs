@@ -8,5 +8,10 @@ namespace Heroes.Domain.Police
         {
             Console.WriteLine("The policeman is requesting support from the police station.");
         }
+
+        public override string ToString()
+        {
+            return "Request Backup";
+        }
     }
 }

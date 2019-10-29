@@ -1,9 +1,8 @@
-﻿namespace Domain.Enums
+﻿namespace Heroes.Domain.Enums
 {
-    public enum FireFighterStrategyEnum
+    public enum PlaceTypeEnum
     {
-        Sequential,
-        StairCase,
-        Spiral
+        House,
+        Square
     }
 }
