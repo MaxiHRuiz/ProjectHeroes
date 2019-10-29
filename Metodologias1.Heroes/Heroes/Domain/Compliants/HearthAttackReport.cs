@@ -1,5 +1,4 @@
-﻿using System;
-using Heroes.Domain.Doctor;
+﻿using Heroes.Domain.Doctor;
 using Heroes.Domain.Fireman;
 
 namespace Heroes.Domain.Compliants
@@ -12,9 +11,6 @@ namespace Heroes.Domain.Compliants
         {
             var handler = (CompliantHandler)responsable;
             handler.TreatingHeartAttack(Pedestrian);
-            Console.WriteLine();
-            //var doctor = (Medic)responsable;
-            //doctor.TreatingHeartAttack(Pedestrian);
         }
     }
 }

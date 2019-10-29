@@ -8,5 +8,10 @@ namespace Heroes.Domain.Police
         {
             Console.WriteLine("The cop is chasing a criminal!");
         }
+
+        public override string ToString()
+        {
+            return "Pursue Criminal";
+        }
     }
 }

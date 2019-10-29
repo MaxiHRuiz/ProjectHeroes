@@ -1,5 +1,4 @@
-﻿using System;
-using Domain.Place;
+﻿using Domain.Place;
 using Heroes.Domain.Fireman;
 
 namespace Heroes.Domain.Compliants
@@ -12,9 +11,6 @@ namespace Heroes.Domain.Compliants
         {
             var handler = (CompliantHandler)responsable;
             handler.changeBurntLamps(Place);
-            Console.WriteLine();
-            //var electrician = (Electrician)responsable;
-            //electrician.changeBurntLamps(Place);
         }
     }
 }

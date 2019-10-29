@@ -42,7 +42,7 @@ namespace Heroes.Domain.Quarter
 
         public IResponsable GetPersonal()
         {
-            var medic = (Medic)this.Medics.Last();
+            var medic = (Application.Heroes.Medic)this.Medics.Last();
             this.Medics.Remove(this.Medics.Last());
 
             medic.Vehicle = this.Vehicles.Last();

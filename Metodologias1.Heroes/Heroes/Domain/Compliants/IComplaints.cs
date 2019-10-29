@@ -1,6 +1,6 @@
 ﻿using Heroes.Domain.Fireman.CompliantIterator;
 
-namespace Heroes.Domain.Fireman
+namespace Heroes.Domain.Compliants
 {
     public interface IComplaints
     {

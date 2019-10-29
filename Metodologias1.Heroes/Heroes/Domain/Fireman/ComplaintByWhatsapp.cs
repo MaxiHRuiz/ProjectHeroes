@@ -1,4 +1,5 @@
-﻿using Heroes.Domain.Fireman.CompliantIterator;
+﻿using Heroes.Domain.Compliants;
+using Heroes.Domain.Fireman.CompliantIterator;
 
 namespace Heroes.Domain.Fireman
 {

@@ -16,8 +16,6 @@ namespace Heroes.Domain.Compliants
         {
             var handler = (CompliantHandler)responsable;
             handler.PutOutFire(Place, Place.Street);
-            //var fireman = (Firefighter)responsable;
-            //fireman.PutOutFire(Place, Place.Street);
         }
     }
 }

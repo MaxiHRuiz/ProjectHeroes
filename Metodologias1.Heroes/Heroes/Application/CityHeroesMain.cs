@@ -9,6 +9,7 @@ using Heroes.Domain.Doctor;
 using Heroes.Domain.FactoryHeroes;
 using Heroes.Domain.Fireman;
 using Heroes.Domain.Fireman.FiremanProxy;
+using Heroes.Domain.HeroesProxy;
 using Heroes.Domain.Place;
 using Heroes.Domain.Police;
 using Heroes.Domain.Quarter;
@@ -22,7 +23,7 @@ namespace Heroes
     {
         static void Main(string[] args)
         {
-            Decorator();
+            Proxy();
             Console.ReadKey();
         }
 
@@ -109,10 +110,10 @@ namespace Heroes
             var complaintsByWhatsapp = new ComplaintByWhatsapp(whatsAppList);
 
             // TEST
-            //CompliantHandler handler = new Medic(new RCPTypeA());
-            var handler = new FiremanProxy().CreateFirefighter();
-            //handler = new Electrician(handler);
-            //handler = new Cop(new RequestBackup(), handler);
+            CompliantHandler handler = new CopProxy().CreateHeroe();
+            handler = new FiremanProxy().CreateHeroe(handler);
+            handler = new ElectricianProxy().CreateHeroe(handler);
+            handler = new MedicProxy().CreateHeroe(handler);
 
             var operator911 = new Operator911(handler);
             operator911.AttendReport(complaintsByWhatsapp);

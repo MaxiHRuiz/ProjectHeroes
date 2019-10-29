@@ -1,4 +1,5 @@
 ﻿using Application.Heroes;
+using Heroes.Domain.Compliants;
 
 namespace Heroes.Domain.Fireman
 {

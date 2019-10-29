@@ -1,4 +1,6 @@
-﻿namespace Heroes.Domain.Fireman.CompliantIterator
+﻿using Heroes.Domain.Compliants;
+
+namespace Heroes.Domain.Fireman.CompliantIterator
 {
     public class IteratorDesk : ICompliantIterator
     {

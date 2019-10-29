@@ -53,20 +53,22 @@
     <Compile Include="Domain\Day\HotDayFactory.cs" />
     <Compile Include="Domain\Day\RainingDayFactory.cs" />
     <Compile Include="Domain\Day\WindyDayFactory.cs" />
-    <Compile Include="Domain\Doctor\ForeignPasserby.cs" />
-    <Compile Include="Domain\Doctor\ForeignPasserbyAdapter.cs" />
-    <Compile Include="Domain\Doctor\IHeartAttack.cs" />
-    <Compile Include="Domain\Doctor\Passerby.cs" />
-    <Compile Include="Domain\Doctor\RCPTypeB.cs" />
-    <Compile Include="Domain\Doctor\RCPTypeA.cs" />
-    <Compile Include="Domain\Doctor\RCP.cs" />
+    <Compile Include="Domain\Enums\RcpEnum.cs" />
+    <Compile Include="Domain\Medic\ForeignPasserby.cs" />
+    <Compile Include="Domain\Medic\ForeignPasserbyAdapter.cs" />
+    <Compile Include="Domain\Medic\IHeartAttack.cs" />
+    <Compile Include="Domain\Medic\Passerby.cs" />
+    <Compile Include="Domain\Medic\RCPTypeB.cs" />
+    <Compile Include="Domain\Medic\RCPTypeA.cs" />
+    <Compile Include="Domain\Medic\RCP.cs" />
     <Compile Include="Domain\Enums\DecoratorTypeEnum.cs" />
+    <Compile Include="Domain\Enums\CommandEnum.cs" />
     <Compile Include="Domain\Enums\PlaceTypeEnum.cs" />
-    <Compile Include="Domain\FactoryHeroes\FireFighterFactory.cs" />
-    <Compile Include="Domain\FactoryHeroes\MedicFactory.cs" />
-    <Compile Include="Domain\FactoryHeroes\ElectricianFactory.cs" />
-    <Compile Include="Domain\FactoryHeroes\CopFactory.cs" />
-    <Compile Include="Domain\FactoryHeroes\IHeroesFactory.cs" />
+    <Compile Include="Domain\Factories\FireFighterFactory.cs" />
+    <Compile Include="Domain\Factories\MedicFactory.cs" />
+    <Compile Include="Domain\Factories\ElectricianFactory.cs" />
+    <Compile Include="Domain\Factories\CopFactory.cs" />
+    <Compile Include="Domain\Factories\IHeroesFactory.cs" />
     <Compile Include="Domain\Fireman\ComplaintByDesk.cs" />
     <Compile Include="Domain\Fireman\ComplaintByWhatsapp.cs" />
     <Compile Include="Domain\Fireman\ComplaintByBoard.cs" />
@@ -76,9 +78,14 @@
     <Compile Include="Domain\Fireman\CompliantIterator\IteratorWhatsapp.cs" />
     <Compile Include="Domain\Fireman\FirefighterSecretary.cs" />
     <Compile Include="Domain\Compliants\FireReport.cs" />
-    <Compile Include="Domain\Fireman\FiremanProxy\FiremanProxy.cs" />
-    <Compile Include="Domain\Fireman\IComplaint.cs" />
-    <Compile Include="Domain\Fireman\IComplaints.cs" />
+    <Compile Include="Domain\HeroesProxy\MedicProxy.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Domain\HeroesProxy\ElectricianProxy.cs" />
+    <Compile Include="Domain\HeroesProxy\CopProxy.cs" />
+    <Compile Include="Domain\HeroesProxy\FiremanProxy.cs" />
+    <Compile Include="Domain\Compliants\IComplaint.cs" />
+    <Compile Include="Domain\Compliants\IComplaints.cs" />
     <Compile Include="Domain\Fireman\IResponsable.cs" />
     <Compile Include="Domain\Fireman\WhatsAppMessage.cs" />
     <Compile Include="Domain\Place\BuilderDecorator\FavorableBuilder.cs" />
@@ -117,16 +124,16 @@
     <Compile Include="Domain\Place\Decorator\DryGrassDecorator.cs" />
     <Compile Include="Domain\Place\Sector.cs" />
     <Compile Include="Domain\Day\WindyDayDecorator.cs" />
-    <Compile Include="Domain\Fire\SequentialStrategy.cs" />
-    <Compile Include="Domain\Fire\SpiralStrategy.cs" />
-    <Compile Include="Domain\Fire\StaircaseStrategy.cs" />
+    <Compile Include="Domain\Fireman\FireStrategy\SequentialStrategy.cs" />
+    <Compile Include="Domain\Fireman\FireStrategy\SpiralStrategy.cs" />
+    <Compile Include="Domain\Fireman\FireStrategy\StaircaseStrategy.cs" />
     <Compile Include="Domain\Enums\FireFighterStrategyEnum.cs" />
     <Compile Include="Application\Heroes\Medic.cs" />
     <Compile Include="Application\Heroes\Electrician.cs" />
     <Compile Include="Application\Heroes\Firefighter.cs" />
     <Compile Include="Application\Heroes\Mechanic.cs" />
     <Compile Include="Application\Heroes\Cop.cs" />
-    <Compile Include="Domain\Fire\IExtinguishFire.cs">
+    <Compile Include="Domain\Fireman\FireStrategy\IExtinguishFire.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Domain\Fireman\IFireObserver.cs" />
