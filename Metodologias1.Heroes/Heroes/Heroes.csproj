@@ -110,6 +110,9 @@
     <Compile Include="Domain\Quarter\Tool\ITool.cs" />
     <Compile Include="Domain\Quarter\Tool\Gun.cs" />
     <Compile Include="Domain\Quarter\Tool\WaterHose.cs" />
+    <Compile Include="Domain\Quarter\Vehicle\State\Engine.cs" />
+    <Compile Include="Domain\Quarter\Vehicle\State\TurnedOn.cs" />
+    <Compile Include="Domain\Quarter\Vehicle\State\TurnedOff.cs" />
     <Compile Include="Domain\Quarter\Vehicle\Van.cs" />
     <Compile Include="Domain\Quarter\Vehicle\PolicePatrolCar.cs" />
     <Compile Include="Domain\Quarter\Vehicle\FireTruck.cs" />

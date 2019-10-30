@@ -27,6 +27,9 @@ namespace Heroes
             Console.ReadKey();
         }
 
+        static void State()
+        {
+        }
 
         static void Proxy()
         {
@@ -248,7 +251,7 @@ namespace Heroes
             // TEST
             CompliantHandler handler = new Medic(new RCPTypeA());
             handler = new Firefighter(handler);
-            //handler = new Electrician(handler);
+            handler = new Electrician(handler);
             handler = new Cop(new RequestBackup(), handler);
 
             var operator911 = new Operator911(handler);
