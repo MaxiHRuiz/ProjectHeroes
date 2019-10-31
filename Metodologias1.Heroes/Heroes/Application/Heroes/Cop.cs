@@ -19,6 +19,8 @@ namespace Application.Heroes
         public Cop(IPoliceOrder command = null, CompliantHandler heroe = null) : base(heroe)
         {
             this.command = command ?? new StopRightThere();
+            this.Vehicle = new PolicePatrolCar();
+            this.Tool = new Gun();
         }
 
         public override void PatrolStreet(IPatrol place)
