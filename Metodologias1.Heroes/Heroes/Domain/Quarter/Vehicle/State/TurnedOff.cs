@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Heroes.Domain.Quarter.Vehicle.State
 {
+    // Apagado
     public class TurnedOff : Engine
     {
         public TurnedOff(IVehicle vehicle) : base(vehicle)
@@ -14,7 +11,13 @@ namespace Heroes.Domain.Quarter.Vehicle.State
 
         public override void TurnOn()
         {
-            this.Vehicle.SetState(new TurnedOn(Vehicle));
+            Console.WriteLine("Vehicle ignited...");
+            this.Vehicle.SetState(new StandOff(Vehicle));
+        }
+
+        public override string ToString()
+        {
+            return "The vehicle is off.";
         }
     }
 }

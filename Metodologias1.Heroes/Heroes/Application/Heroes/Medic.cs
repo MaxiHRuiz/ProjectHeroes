@@ -4,6 +4,7 @@ using Heroes.Domain.Doctor;
 using Heroes.Domain.Fireman;
 using Heroes.Domain.Quarter.Tool;
 using Heroes.Domain.Quarter.Vehicle;
+using Heroes.Domain.Quarter.Vehicle.State;
 
 namespace Application.Heroes
 {
@@ -22,6 +23,29 @@ namespace Application.Heroes
 
         public override void TreatingHeartAttack(IHeartAttack passerby)
         {
+            this.Vehicle.GetSate().TurnOn();
+            this.Vehicle.TurnOnSiren();
+            this.Vehicle.Drive();
+            if (this.Vehicle.GetSate().GetType() == typeof(Broken))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\nOh no! the doctor's vehicle has broken and now he can not help the patient.\n");
+                Console.ResetColor();
+                return;
+            }
+            else
+            {
+                // While the vehicle is not at rest, it slows down so that it can be switched off.
+                if (this.Vehicle.GetSate().GetType() != typeof(StandOff) && this.Vehicle.GetSate().GetType() != typeof(TurnedOff))
+                {
+                    this.Vehicle.GetSate().Brake();
+                }
+
+                this.Vehicle.GetSate().TurnOff();
+                Console.WriteLine(this.Vehicle.GetSate().ToString());
+            }
+
+            this.Tool.Use();
             TreatingFainting();
             this.Rcp.AttendHeartAttack(passerby);
             this.Tool.PutAway();
@@ -30,11 +54,8 @@ namespace Application.Heroes
         public void TreatingFainting()
         {
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("The doctor is treating the fainted patient.\n");
+            Console.WriteLine("The doctor will treat the fainted patient.\n");
             Console.ResetColor();
-            this.Vehicle.Drive();
-            this.Vehicle.TurnOnSiren();
-            this.Tool.Use();
         }
     }
 }

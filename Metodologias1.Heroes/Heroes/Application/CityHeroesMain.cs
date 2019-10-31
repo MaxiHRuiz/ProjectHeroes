@@ -27,10 +27,6 @@ namespace Heroes
             Console.ReadKey();
         }
 
-        static void State()
-        {
-        }
-
         static void Proxy()
         {
             var A = new House(100, 25, 4);

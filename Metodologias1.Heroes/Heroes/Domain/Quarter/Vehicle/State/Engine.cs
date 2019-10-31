@@ -13,32 +13,32 @@ namespace Heroes.Domain.Quarter.Vehicle
 
         public virtual void Accelerate()
         {
-            Console.WriteLine("Without effect.");
+            Console.WriteLine("Accelerate - Without effect.");
         }
 
         public virtual void Decelerate()
         {
-            Console.WriteLine("Without effect.");
+            Console.WriteLine("Decelerate - Without effect.");
         }
 
         public virtual void Brake()
         {
-            Console.WriteLine("Without effect.");
+            Console.WriteLine("Brake - Without effect.");
         }
 
         public virtual void TurnOn()
         {
-            Console.WriteLine("Without effect.");
+            Console.WriteLine("TurnOn - Without effect.");
         }
 
         public virtual void TurnOff()
         {
-            Console.WriteLine("Without effect.");
+            Console.WriteLine("TurnOff - Without effect.");
         }
 
         public virtual void Fix()
         {
-            Console.WriteLine("Without effect.");
+            Console.WriteLine("Fix - Without effect.");
         }
     }
 }

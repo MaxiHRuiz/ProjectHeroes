@@ -7,5 +7,7 @@
         void Drive();
 
         void SetState(Engine engine);
+
+        Engine GetSate();
     }
 }
