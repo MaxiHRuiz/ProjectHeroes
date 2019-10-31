@@ -122,6 +122,10 @@ namespace Heroes
         {
             var copFactory = new CopFactory();
             var quarter = CreateHeroe(copFactory);
+            var quarter2 = CreateHeroe(copFactory);
+
+            Console.WriteLine($"HashCode of quarter 1 is {quarter.GetHashCode()}");
+            Console.WriteLine($"HashCode of quarter 2 is {quarter2.GetHashCode()}");
 
             for (int i = 0; i < 4; i++)
             {

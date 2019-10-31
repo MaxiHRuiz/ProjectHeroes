@@ -14,7 +14,11 @@ namespace Application.Heroes
 
         public IVehicle Vehicle { get; set; }
 
-        public Electrician(CompliantHandler heroe = null) : base(heroe) { }
+        public Electrician(CompliantHandler heroe = null) : base(heroe)
+        {
+            this.Vehicle = new Van();
+            this.Tool = new Screwdriver();
+        }
 
         public void Checking()
         {

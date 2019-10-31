@@ -20,7 +20,11 @@ namespace Application.Heroes
 
         public IExtinguishFire ExtinguishStrategy { get; set; } = new SequentialStrategy();
 
-        public Firefighter(CompliantHandler handler = null) : base(handler) { }
+        public Firefighter(CompliantHandler handler = null) : base(handler)
+        {
+            this.Vehicle = new FireTruck();
+            this.Tool = new WaterHose();
+        }
 
         public override void PutOutFire(IPlace place, Street street)
         {

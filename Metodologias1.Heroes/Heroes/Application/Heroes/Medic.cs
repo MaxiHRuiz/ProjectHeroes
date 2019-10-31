@@ -17,6 +17,8 @@ namespace Application.Heroes
         public Medic(RCP rcp, CompliantHandler handler = null) : base(handler)
         {
             Rcp = rcp;
+            this.Vehicle = new Ambulance();
+            this.Tool = new Defibrillator();
         }
 
         public RCP Rcp { get; set; }
