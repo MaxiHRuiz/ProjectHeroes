@@ -4,6 +4,7 @@ using Heroes.Domain.Fireman;
 using Heroes.Domain.Police;
 using Heroes.Domain.Quarter.Tool;
 using Heroes.Domain.Quarter.Vehicle;
+using Heroes.Domain.Quarter.Vehicle.State;
 
 namespace Application.Heroes
 {
@@ -23,11 +24,30 @@ namespace Application.Heroes
         public override void PatrolStreet(IPatrol place)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("The cop is patrolling the streets...");
+            Console.WriteLine("The cop wil patroll the streets...");
             Console.ResetColor();
 
-            this.Vehicle.Drive();
+            this.Vehicle.GetSate().TurnOn();
             this.Vehicle.TurnOnSiren();
+            this.Vehicle.Drive();
+            if (this.Vehicle.GetSate().GetType() == typeof(Broken))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\nOh no! the cop's vehicle has broken and now he can not patrol the streets.\n");
+                Console.ResetColor();
+                return;
+            }
+            else
+            {
+                // While the vehicle is not at rest, it slows down so that it can be switched off.
+                if (this.Vehicle.GetSate().GetType() != typeof(StandOff) && this.Vehicle.GetSate().GetType() != typeof(TurnedOff))
+                {
+                    this.Vehicle.GetSate().Brake();
+                }
+
+                this.Vehicle.GetSate().TurnOff();
+                Console.WriteLine(this.Vehicle.GetSate().ToString());
+            }
             if (place.ThereIsSomethingOutOfOrdinary())
             {
                 this.Tool.Use();

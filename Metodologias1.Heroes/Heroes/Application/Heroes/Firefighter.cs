@@ -8,6 +8,7 @@ using Heroes.Domain.Enums;
 using Heroes.Domain.Fireman;
 using Heroes.Domain.Quarter.Tool;
 using Heroes.Domain.Quarter.Vehicle;
+using Heroes.Domain.Quarter.Vehicle.State;
 
 namespace Application.Heroes
 {
@@ -34,11 +35,31 @@ namespace Application.Heroes
                     break;
             }
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("The fireman is putting out the fire...\n");
+            Console.WriteLine("The fireman will put out the fire...\n");
             Console.ResetColor();
 
-            this.Vehicle.Drive();
+            this.Vehicle.GetSate().TurnOn();
             this.Vehicle.TurnOnSiren();
+            this.Vehicle.Drive();
+            if (this.Vehicle.GetSate().GetType() == typeof(Broken))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\nOh no! the fireman's vehicle has broken and now he can not put out the fire.\n");
+                Console.ResetColor();
+                return;
+            }
+            else
+            {
+                // While the vehicle is not at rest, it slows down so that it can be switched off.
+                if (this.Vehicle.GetSate().GetType() != typeof(StandOff) && this.Vehicle.GetSate().GetType() != typeof(TurnedOff))
+                {
+                    this.Vehicle.GetSate().Brake();
+                }
+
+                this.Vehicle.GetSate().TurnOff();
+                Console.WriteLine(this.Vehicle.GetSate().ToString());
+            }
+
             this.Tool.Use();
             this.ExtinguishStrategy.ExtinguishFire(place.GetFields(), street.WaterFlowPerMinute);
 
